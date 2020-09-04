@@ -21,10 +21,20 @@ export class favorites extends Component {
   }
 
   render() {
+    const { data } = this.props;
+    const gameInfo = data.favorites;
+    console.log(gameInfo);
+
+    const gameMarkup = gameInfo.map((card) => {
+      console.log(card);
+      return <GameCard key={card.id} data={card} />;
+    });
+
     return (
       <div>
         This page will display a feed of games with the option to favorites for
         a specific game or specific title
+        {gameMarkup}
       </div>
     );
   }
