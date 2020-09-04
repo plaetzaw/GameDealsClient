@@ -6,10 +6,18 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import LoginIcon from "@material-ui/icons/LockOpen";
+import RegisterIcon from "@material-ui/icons/PersonAdd";
+import SearchIcon from "@material-ui/icons/SearchTwoTone";
+import FavoriteIcon from "@material-ui/icons/FavoriteBorderTwoTone";
+import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
+import { Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor: "yellow",
+    color: "white",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -29,15 +37,49 @@ export default function ButtonAppBar() {
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="inherit"
             aria-label="menu"
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
+          <Button
+            label="Login"
+            className={classes.menuButton}
+            startIcon={<LoginIcon />}
+            component={Link}
+            to="/login"
+          >
+            Login
+          </Button>
+          <Button
+            label="Register"
+            className={classes.menuButton}
+            startIcon={<RegisterIcon />}
+          >
+            Register
+          </Button>
+          <Button
+            label="Search"
+            className={classes.menuButton}
+            startIcon={<SearchIcon />}
+          >
+            Search
+          </Button>
+          <Button
+            label="Favorite"
+            color="white"
+            className={classes.menuButton}
+            startIcon={<FavoriteIcon />}
+          >
+            Favorite
+          </Button>
+          <Typography variant="h6" className={classes.title}></Typography>
+          <Button
+            label="logout"
+            className={classes.menuButton}
+            startIcon={<LogoutIcon />}
+          >
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
