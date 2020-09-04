@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class home extends Component {
+export class search extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ export class home extends Component {
   }
 }
 
-export default home;
+export default search;

@@ -7,7 +7,7 @@ import UI from "./components/Layout/UI";
 
 //Pages
 import Favorites from "./pages/favorites";
-import Home from "./pages/home";
+import Search from "./pages/search";
 import Login from "./pages/login";
 import Register from "./pages/register";
 
@@ -21,16 +21,18 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 
 //Authentication
+import AuthRoute from "./utility/AuthRoute";
+import ProtectedRoute from "./utility/ProtectedRoute";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <UI />
       <Switch>
-        <Route exact path="/Login" component={Login} />
+        <AuthRoute exact path="/Login" component={Login} />
         <Route exact path="/Register" component={Register} />
-        <Route exact path="/Home" component={Home} />
-        <Route exact path="/Favorites" component={Favorites} />
+        <ProtectedRoute exact path="/search" component={Search} />
+        <ProtectedRoute exact path="/Favorites" component={Favorites} />
       </Switch>
     </BrowserRouter>
   </Provider>,

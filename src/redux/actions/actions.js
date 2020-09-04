@@ -4,6 +4,8 @@ import {
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOGGED_IN,
+  GET_FAVORITE_GAMES,
+  LOADING_DATA,
 } from "./actionTypes";
 
 // Set JWT Token
@@ -43,4 +45,15 @@ export const RegisterUser = (newUserData) => () => {
       console.log("Registration Failed. Please try again");
     }
   });
+};
+// Get User Favorites
+export const GetUserGames = (userID) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  console.log("Retrieving user favorites");
+  axios
+    .post("http://localhost8080/viewSavedGames", userID)
+    .then((favorites) => {
+      dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
+    })
+    .catch((err) => console.log(err));
 };
