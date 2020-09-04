@@ -50,8 +50,10 @@ export const RegisterUser = (newUserData) => () => {
 export const GetUserGames = (userID) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   console.log("Retrieving user favorites");
+  console.log(userID);
+  console.log(typeof userID);
   axios
-    .post("http://localhost8080/viewSavedGames", userID)
+    .post("http://localhost:8080/viewSavedGames", userID)
     .then((favorites) => {
       dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
     })

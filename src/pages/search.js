@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class search extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+    };
+  }
+
   render() {
     return (
       <div>
@@ -11,4 +20,16 @@ export class search extends Component {
   }
 }
 
-export default search;
+search.propTypes = {
+  data: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+  users: state.users,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(search);
