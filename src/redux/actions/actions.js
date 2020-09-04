@@ -34,7 +34,7 @@ export const LogoutUser = () => (dispatch) => {
 };
 
 // Register
-export const RegisterUser = (newUserData) => {
+export const RegisterUser = (newUserData) => () => {
   console.log("Beginning new user registration");
   axios.post("http://localhost:8080/register", newUserData).then((res) => {
     if (res.status === 200) {
