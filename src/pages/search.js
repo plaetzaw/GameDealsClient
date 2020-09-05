@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import GameSearch from "../components/gameSearch";
+import GameCard from "../components/gameCard";
 
 export class search extends Component {
   constructor() {
@@ -15,6 +17,7 @@ export class search extends Component {
       <div>
         This page will display a feed of games with the option to search for a
         specific game or specific title
+        <GameSearch />
       </div>
     );
   }

@@ -22,20 +22,56 @@ class UI extends Component {
   };
 
   render() {
+    const { loggedIn } = this.props.users.loggedIn;
+    let loginMarkup = !loggedIn ? (
+      <>
+        <Button
+          label="Login"
+          startIcon={<LoginIcon />}
+          component={Link}
+          to="/login"
+        >
+          Login
+        </Button>
+        <Button
+          label="Register"
+          startIcon={<RegisterIcon />}
+          component={Link}
+          to="/register"
+        >
+          Register
+        </Button>
+      </>
+    ) : (
+      <>User Logged In</>
+    );
+
+    let logoutMarkup = loggedIn ? (
+      <>User Not Logged-In</>
+    ) : (
+      <>
+        <Button
+          label="logout"
+          startIcon={<LogoutIcon />}
+          onClick={() => {
+            console.log("I Have Been Clicked");
+            this.props.LogoutUser();
+          }}
+        >
+          Logout
+        </Button>
+      </>
+    );
+
     return (
       <div>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              edge="start"
-              // className={classes.menuButton}
-              aria-label="menu"
-            >
+            <IconButton edge="start" aria-label="menu">
               <MenuIcon />
             </IconButton>
-            <Button
+            {/* <Button
               label="Login"
-              // className={classes.menuButton}
               startIcon={<LoginIcon />}
               component={Link}
               to="/login"
@@ -44,16 +80,15 @@ class UI extends Component {
             </Button>
             <Button
               label="Register"
-              // className={classes.menuButton}
               startIcon={<RegisterIcon />}
               component={Link}
               to="/register"
             >
               Register
-            </Button>
+            </Button> */}
+            {loginMarkup}
             <Button
               label="Search"
-              // className={classes.menuButton}
               startIcon={<SearchIcon />}
               component={Link}
               to="/search"
@@ -62,7 +97,6 @@ class UI extends Component {
             </Button>
             <Button
               label="Favorite"
-              // className={classes.menuButton}
               startIcon={<FavoriteIcon />}
               component={Link}
               to="/favorites"
@@ -70,9 +104,8 @@ class UI extends Component {
               Favorite
             </Button>
             <Typography variant="h6"></Typography>
-            <Button
+            {/* <Button
               label="logout"
-              // className={classes.menuButton}
               startIcon={<LogoutIcon />}
               onClick={() => {
                 console.log("I Have Been Clicked");
@@ -80,7 +113,8 @@ class UI extends Component {
               }}
             >
               Logout
-            </Button>
+            </Button> */}
+            {logoutMarkup}
           </Toolbar>
         </AppBar>
       </div>
@@ -91,10 +125,12 @@ class UI extends Component {
 UI.propTypes = {
   LogoutUser: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  users: state.users,
 });
 
 const mapDispatchToProps = {

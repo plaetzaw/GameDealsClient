@@ -6,6 +6,7 @@ import {
   LOGGED_IN,
   GET_FAVORITE_GAMES,
   LOADING_DATA,
+  SEARCH_FOR_GAME_BY_TITLE,
 } from "./actionTypes";
 
 // Set JWT Token
@@ -56,6 +57,18 @@ export const GetUserGames = (userID) => (dispatch) => {
     .post("http://localhost:8080/viewSavedGames", userID)
     .then((favorites) => {
       dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
+    })
+    .catch((err) => console.log(err));
+};
+
+// Search for Games by Title
+export const GetGamesByTitle = (gameTitle) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  console.log("Searching for games by title");
+  axios
+    .post("http://localhost:8080/searchTitle", gameTitle)
+    .then((searchedGames) => {
+      dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
     })
     .catch((err) => console.log(err));
 };

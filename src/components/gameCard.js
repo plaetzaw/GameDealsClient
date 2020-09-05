@@ -11,7 +11,7 @@ export default class gameCard extends Component {
   constructor() {
     super();
     this.state = {
-      steamReviews: true,
+      steamReviews: null,
     };
   }
 
@@ -34,11 +34,15 @@ export default class gameCard extends Component {
 
     console.log(steamRatingPercent);
 
-    if ({ steamRatingPercent } === 0) {
-      this.setState(() => ({
-        steamReviews: false,
-      }));
-    }
+    // if ({ steamRatingPercent } === 0) {
+    //   this.setState(() => ({
+    //     steamReviews: false,
+    //   }));
+    // } else {
+    //   this.setState(() => ({
+    //     steamReviews: true,
+    //   }));
+    // }
 
     console.log(this.state.steamReviews);
 
@@ -69,21 +73,16 @@ export default class gameCard extends Component {
         <CardActionArea>
           <CardMedia component="img" src={thumb} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              <h1>{title}</h1>
-              <br />
-              <h2>Ratings</h2>
-              {steamMarkup}
-              <br />
-              {/* Steam: {steamRatingPercent} based on {steamRatingCount} reviews
-              classifying the game as {steamRatingText}
-              <br /> */}
-              Metacritic score: {metacriticScore}/100
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              <h3>Pricing</h3>
-              {saleMarkup}
-            </Typography>
+            <h1>{title}</h1>
+            <br />
+            <h2>Ratings</h2>
+            {steamMarkup}
+            <br />
+            Steam: {steamRatingPercent} based on {steamRatingCount} reviews
+            classifying the game as {steamRatingText}
+            <br />
+            Metacritic score: {metacriticScore}/100 Pricing
+            {saleMarkup}
           </CardContent>
         </CardActionArea>
         <CardActions>
