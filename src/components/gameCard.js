@@ -8,6 +8,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 export default class gameCard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      steamReviews: true,
+    };
+  }
+
   render() {
     const {
       id,
@@ -25,6 +32,25 @@ export default class gameCard extends Component {
       dealRating,
     } = this.props.data;
 
+    console.log(steamRatingPercent);
+
+    if ({ steamRatingPercent } === 0) {
+      this.setState(() => ({
+        steamReviews: false,
+      }));
+    }
+
+    console.log(this.state.steamReviews);
+
+    let steamMarkup = !this.state.steamReviews ? (
+      <>There are no Steam Reviews for this title</>
+    ) : (
+      <>
+        Steam: {steamRatingPercent} based on {steamRatingCount} reviews
+        classifying the game as {steamRatingText}
+      </>
+    );
+
     let saleMarkup = !isOnSale ? (
       <>
         <h3>
@@ -36,7 +62,6 @@ export default class gameCard extends Component {
         <h1>This game is currently on Sale!</h1>
         Current Price: {salePrice} Normal Price: {normalPrice} Savings %:
         {savings}
-        {savings}
       </>
     );
     return (
@@ -45,12 +70,14 @@ export default class gameCard extends Component {
           <CardMedia component="img" src={thumb} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {title}
+              <h1>{title}</h1>
               <br />
               <h2>Ratings</h2>
-              Steam: {steamRatingPercent} based on {steamRatingCount} reviews
-              classifying the game as {steamRatingText}
+              {steamMarkup}
               <br />
+              {/* Steam: {steamRatingPercent} based on {steamRatingCount} reviews
+              classifying the game as {steamRatingText}
+              <br /> */}
               Metacritic score: {metacriticScore}/100
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
