@@ -11,7 +11,9 @@ export default class gameCard extends Component {
   constructor() {
     super();
     this.state = {
-      steamReviews: null,
+      steamReviews: "",
+      metacriticColor: "",
+      testnumber: "",
     };
   }
 
@@ -26,6 +28,7 @@ export default class gameCard extends Component {
       normalPrice,
       isOnSale,
       metacriticScore,
+      metacriticLink,
       steamRatingText,
       steamRatingPercent,
       steamRatingCount,
@@ -44,7 +47,25 @@ export default class gameCard extends Component {
     //   }));
     // }
 
-    console.log(this.state.steamReviews);
+    // if (metacriticScore > 80) {
+    //   this.setState({
+    //     metacriticColor: "green",
+    //     testnumber: 1,
+    //   });
+    //   console.log(`Game is pretty good, it got a score of ${metacriticScore}`);
+    // } else if (metacriticScore > 61 && metacriticScore < 80) {
+    //   this.setState({
+    //     metacriticColor: "yellow",
+    //     testnumber: 2,
+    //   });
+    //   console.log(`Game is decent, it got a score of ${metacriticScore}`);
+    // } else {
+    //   this.setState({
+    //     metacriticColor: "red",
+    //     testnumber: 3,
+    //   });
+    //   console.log(`Game is not great, it got a score of ${metacriticScore}`);
+    // }
 
     let steamMarkup = !this.state.steamReviews ? (
       <>There are no Steam Reviews for this title</>
@@ -81,7 +102,11 @@ export default class gameCard extends Component {
             Steam: {steamRatingPercent} based on {steamRatingCount} reviews
             classifying the game as {steamRatingText}
             <br />
-            Metacritic score: {metacriticScore}/100 Pricing
+            <div style={{ backgroundColor: this.state.metacriticColor }}>
+              Metacritic score: {metacriticScore}/100 Pricing
+              <br />
+              View the game on Metacritic!
+            </div>
             {saleMarkup}
           </CardContent>
         </CardActionArea>

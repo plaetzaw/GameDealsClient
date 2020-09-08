@@ -68,6 +68,7 @@ export const GetGamesByTitle = (gameTitle) => (dispatch) => {
   axios
     .post("http://localhost:8080/searchTitle", gameTitle)
     .then((searchedGames) => {
+      console.log(searchedGames);
       dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
     })
     .catch((err) => console.log(err));
