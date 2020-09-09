@@ -8,6 +8,7 @@ const {
 
 const initialState = {
   loadingData: true,
+  searchedData: false,
   searchedGames: [],
   favorites: [],
   uploads: [],
@@ -34,6 +35,7 @@ const dataReducers = (state = initialState, action) => {
       return {
         ...state,
         searchedGames: action.payload,
+        searchedData: true,
       };
     case SEARCH_FOR_DEALS:
       return {

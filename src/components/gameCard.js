@@ -5,18 +5,9 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 
 export default class gameCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      steamReviews: "",
-      metacriticColor: "",
-      testnumber: "",
-    };
-  }
-
   render() {
     const {
       id,
@@ -32,47 +23,21 @@ export default class gameCard extends Component {
       steamRatingText,
       steamRatingPercent,
       steamRatingCount,
+      steamCheckerBool,
+      scoreColor,
       dealRating,
     } = this.props.data;
 
-    console.log(steamRatingPercent);
-
-    // if ({ steamRatingPercent } === 0) {
-    //   this.setState(() => ({
-    //     steamReviews: false,
-    //   }));
-    // } else {
-    //   this.setState(() => ({
-    //     steamReviews: true,
-    //   }));
-    // }
-
-    // if (metacriticScore > 80) {
-    //   this.setState({
-    //     metacriticColor: "green",
-    //     testnumber: 1,
-    //   });
-    //   console.log(`Game is pretty good, it got a score of ${metacriticScore}`);
-    // } else if (metacriticScore > 61 && metacriticScore < 80) {
-    //   this.setState({
-    //     metacriticColor: "yellow",
-    //     testnumber: 2,
-    //   });
-    //   console.log(`Game is decent, it got a score of ${metacriticScore}`);
-    // } else {
-    //   this.setState({
-    //     metacriticColor: "red",
-    //     testnumber: 3,
-    //   });
-    //   console.log(`Game is not great, it got a score of ${metacriticScore}`);
-    // }
-
-    let steamMarkup = !this.state.steamReviews ? (
-      <>There are no Steam Reviews for this title</>
+    let steamMarkup = steamCheckerBool ? (
+      <>
+        <h1>
+          {title} is rated at {steamRatingPercent}% based on {steamRatingCount}{" "}
+          reviews classifying the game as {steamRatingText}
+        </h1>
+      </>
     ) : (
       <>
-        Steam: {steamRatingPercent} based on {steamRatingCount} reviews
-        classifying the game as {steamRatingText}
+        <h2>There are no Steam Reviews for this title</h2>
       </>
     );
 
@@ -90,7 +55,7 @@ export default class gameCard extends Component {
       </>
     );
     return (
-      <Card>
+      <Card style={{ backgroundColor: scoreColor }}>
         <CardActionArea>
           <CardMedia component="img" src={thumb} />
           <CardContent>
@@ -99,19 +64,17 @@ export default class gameCard extends Component {
             <h2>Ratings</h2>
             {steamMarkup}
             <br />
-            Steam: {steamRatingPercent} based on {steamRatingCount} reviews
-            classifying the game as {steamRatingText}
-            <br />
-            <div style={{ backgroundColor: this.state.metacriticColor }}>
+            <div style={{ backgroundColor: scoreColor }}>
               Metacritic score: {metacriticScore}/100 Pricing
               <br />
-              View the game on Metacritic!
             </div>
             {saleMarkup}
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary"></Button>
+          <Button size="medium" color="primary">
+            View on MetaCritic!
+          </Button>
         </CardActions>
       </Card>
     );
