@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import {
   Card,
   CardActionArea,
@@ -9,9 +11,21 @@ import {
 } from "@material-ui/core";
 import Favorite from "@material-ui/icons/FavoriteOutlined";
 import Eyes from "@material-ui/icons/PanoramaFishEye";
+import { ButtonGroup } from "@material-ui/core";
+// import { SubmitToFavorites } from "../redux/actions/actions";
+
 // import Typography from "@material-ui/core/Typography";
 
-export class gameCardMini extends Component {
+class gameCardMini extends Component {
+  //   handleSubmit = () => {
+  //     let { title, salePrice } = this.props.data;
+  //     const GameObj = {
+  //       title: title,
+  //       salePrice: salePrice,
+  //     };
+  //     this.props.SubmitToFavorites(gameObj);
+  //   };
+
   render() {
     const {
       title,
@@ -21,6 +35,7 @@ export class gameCardMini extends Component {
       metacriticLink,
       thumb,
     } = this.props.data;
+
     return (
       <Card>
         <CardActionArea>
@@ -33,6 +48,7 @@ export class gameCardMini extends Component {
             <br />
             Current Price: {salePrice}
           </CardContent>
+
           <div style={{ backgroundColor: "red" }}>
             <Button size="small" color="primary" startIcon={<Favorite />}>
               Add To Favorites

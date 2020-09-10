@@ -7,6 +7,7 @@ import {
   GET_FAVORITE_GAMES,
   LOADING_DATA,
   SEARCH_FOR_GAME_BY_TITLE,
+  SET_GAME_TO_FAVORITES,
 } from "./actionTypes";
 
 // Set JWT Token
@@ -70,6 +71,18 @@ export const GetGamesByTitle = (gameTitle) => (dispatch) => {
     .then((searchedGames) => {
       console.log(searchedGames);
       dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
+    })
+    .catch((err) => console.log(err));
+};
+
+// Submit Game to Favorites
+export const SubmitToFavorites = (gameObj) => (dispatch) => {
+  console.log("Submitting game to favorites database");
+  axios
+    .post("http://localhost:8080/createGameEntry", gameObj)
+    .then((favorites) => {
+      console.log(favorites);
+      dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
     })
     .catch((err) => console.log(err));
 };
