@@ -26,7 +26,6 @@ export class favorites extends Component {
     console.log(gameInfo);
 
     const gameMarkup = gameInfo.map((card) => {
-      console.log(card);
       return <GameCard key={card.id} data={card} />;
     });
 

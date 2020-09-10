@@ -5,8 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/SearchTwoTone";
 import Button from "@material-ui/core/Button";
 import { GetGamesByTitle } from "../redux/actions/actions";
-// import GameCard from "./gameCard";
 import GameCardMini from "./gameCardMini";
+import Grid from "@material-ui/core/Grid";
 
 class gameSearch extends Component {
   constructor() {
@@ -33,8 +33,8 @@ class gameSearch extends Component {
   render() {
     const { data } = this.props;
     const searchData = data.searchedGames;
+
     const searchMarkup = searchData.map((card) => {
-      console.log(card);
       return <GameCardMini key={card.id} data={card} />;
     });
 
@@ -63,7 +63,9 @@ class gameSearch extends Component {
             Search!
           </Button>
         </form>
-        {searchCard}
+        <Grid container spacing={3}>
+          {searchCard}
+        </Grid>
       </div>
     );
   }

@@ -67,6 +67,7 @@ export class Login extends Component {
             placeholder="Password"
             onChange={(e) => this.handleChange(e)}
             variant="outlined"
+            type="password"
           />
           <Button
             variant="contained"
