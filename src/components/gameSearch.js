@@ -39,9 +39,9 @@ class gameSearch extends Component {
     });
 
     const searchCard = data.searchedGame ? (
-      <>Testing</>
-    ) : (
       <>Hey is this thing working</>
+    ) : (
+      <>{searchMarkup}</>
     );
 
     return (

@@ -34,12 +34,13 @@ const dataReducers = (state = initialState, action) => {
     case SEARCH_FOR_GAME_BY_TITLE:
       return {
         ...state,
-        searchedGames: action.payload,
         searchedData: true,
+        searchedGames: action.payload,
       };
     case SEARCH_FOR_DEALS:
       return {
         ...state,
+        searchedData: true,
         searchedGames: action.payload,
       };
     default:
