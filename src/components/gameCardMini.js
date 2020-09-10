@@ -12,17 +12,55 @@ import {
 import Favorite from "@material-ui/icons/FavoriteOutlined";
 import Eyes from "@material-ui/icons/PanoramaFishEye";
 import { ButtonGroup } from "@material-ui/core";
-// import { SubmitToFavorites } from "../redux/actions/actions";
+import { SubmitToFavorites } from "../redux/actions/actions";
 
 // import Typography from "@material-ui/core/Typography";
 
 class gameCardMini extends Component {
   onSubmit = (e) => {
     e.preventDefault();
-    let { title, salePrice } = this.props.data;
+    let {
+      title,
+      storeID,
+      gameID,
+      normalPrice,
+      salePrice,
+      savings,
+      isOnSale,
+      metacriticLink,
+      metacriticScore,
+      steamRatingText,
+      steamRatingPercent,
+      steamRatingCount,
+      steamAppID,
+      releaseDate,
+      lastChange,
+      dealRating,
+      thumb,
+      dealID,
+    } = this.props.data;
+    let userID = this.props.users.credentials.id;
     let GameObj = {
       title: title,
+      storeID: storeID,
+      gameID: gameID,
+      normalPrice: normalPrice,
       salePrice: salePrice,
+      savings: savings,
+      isOnSale: isOnSale,
+      metacriticLink: metacriticLink,
+      metacriticScore: metacriticScore,
+      steamRatingText: steamRatingText,
+      steamRatingPercent: steamRatingPercent,
+      steamRatingCount: steamRatingCount,
+      steamAppID,
+      steamAppID,
+      releaseDate: releaseDate,
+      lastChange: lastChange,
+      dealRating: dealRating,
+      thumb: thumb,
+      dealID: dealID,
+      userID: userID,
     };
     this.props.SubmitToFavorites(GameObj);
     console.log("New task posted");
@@ -52,7 +90,12 @@ class gameCardMini extends Component {
           </CardContent>
 
           <div style={{ backgroundColor: "red" }}>
-            <Button size="small" color="primary" startIcon={<Favorite />}>
+            <Button
+              size="small"
+              color="primary"
+              startIcon={<Favorite />}
+              onClick={this.onSubmit}
+            >
               Add To Favorites
             </Button>
           </div>
@@ -69,4 +112,17 @@ class gameCardMini extends Component {
   }
 }
 
-export default gameCardMini;
+gameCardMini.propTypes = {
+  SubmitToFavorites: PropTypes.func.isRequired,
+  users: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = {
+  SubmitToFavorites,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(gameCardMini);
