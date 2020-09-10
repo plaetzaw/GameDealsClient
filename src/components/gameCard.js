@@ -71,7 +71,11 @@ export default class gameCard extends Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="medium" color="primary">
+          <Button
+            size="medium"
+            color="primary"
+            href={`https://www.metacritic.com/${metacriticLink}`}
+          >
             View on MetaCritic!
           </Button>
         </CardActions>

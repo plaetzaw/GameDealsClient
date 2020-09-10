@@ -17,14 +17,16 @@ import { ButtonGroup } from "@material-ui/core";
 // import Typography from "@material-ui/core/Typography";
 
 class gameCardMini extends Component {
-  //   handleSubmit = () => {
-  //     let { title, salePrice } = this.props.data;
-  //     const GameObj = {
-  //       title: title,
-  //       salePrice: salePrice,
-  //     };
-  //     this.props.SubmitToFavorites(gameObj);
-  //   };
+  onSubmit = (e) => {
+    e.preventDefault();
+    let { title, salePrice } = this.props.data;
+    let GameObj = {
+      title: title,
+      salePrice: salePrice,
+    };
+    this.props.SubmitToFavorites(GameObj);
+    console.log("New task posted");
+  };
 
   render() {
     const {
