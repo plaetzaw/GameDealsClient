@@ -107,3 +107,38 @@ export const DeleteFromFavorites = (data) => (dispatch) => {
     })
     .catch((err) => console.error(err));
 };
+
+//Update Username
+export const UpdateUsername = (username) => () => {
+  console.log(username);
+  axios.post("http://localhost:8080/updateUsername", username).then((res) => {
+    if (res.status === 200) {
+      console.log("Update Successful");
+    } else {
+      console.log("Update Failed. Please try again");
+    }
+  });
+};
+
+//Update Email
+export const UpdateEmail = (email) => () => {
+  console.log(email);
+  axios.post("http://localhost:8080/updateEmail", email).then((res) => {
+    if (res.status === 200) {
+      console.log("Update Successful");
+    } else {
+      console.log("Update Failed. Please try again");
+    }
+  });
+};
+
+//Update Password
+export const UpdatePassword = (password) => () => {
+  axios.post("http://localhost:8080/updatePassword", password).then((res) => {
+    if (res.status === 200) {
+      console.log("Update Successful");
+    } else {
+      console.log("Update Failed. Please try again");
+    }
+  });
+};

@@ -10,6 +10,7 @@ import Favorites from "./pages/favorites";
 import Search from "./pages/search";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import Settings from "./pages/settings";
 import Toast from "./components/toast";
 
 //Routing
@@ -34,6 +35,7 @@ ReactDOM.render(
         <Route exact path="/Register" component={Register} />
         <ProtectedRoute exact path="/search" component={Search} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
+        <Route exact path="/Settings" component={Settings} />
         <Route exact path="/Toast" component={Toast} />
       </Switch>
     </BrowserRouter>
