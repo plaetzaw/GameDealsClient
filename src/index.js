@@ -35,7 +35,7 @@ ReactDOM.render(
         <Route exact path="/Register" component={Register} />
         <ProtectedRoute exact path="/search" component={Search} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
-        <Route exact path="/Settings" component={Settings} />
+        <ProtectedRoute exact path="/Settings" component={Settings} />
         <Route exact path="/Toast" component={Toast} />
       </Switch>
     </BrowserRouter>

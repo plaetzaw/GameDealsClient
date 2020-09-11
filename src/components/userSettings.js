@@ -63,6 +63,7 @@ class userSettings extends Component {
       >
         <h1>Update User Information</h1>
         <h3>Update Username</h3>
+        Current Username: {this.props.users.credentials.username}
         <form
           style={{
             display: "grid",
@@ -89,6 +90,7 @@ class userSettings extends Component {
           </Button>
         </form>
         <h3>Update Email Address</h3>
+        Current Email: {this.props.users.credentials.email}
         <form
           style={{
             display: "grid",
@@ -115,7 +117,6 @@ class userSettings extends Component {
           </Button>
         </form>
         <h3>Update Password</h3>
-
         <form
           style={{
             display: "grid",

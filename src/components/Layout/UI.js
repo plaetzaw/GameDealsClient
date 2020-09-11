@@ -11,6 +11,7 @@ import RegisterIcon from "@material-ui/icons/PersonAdd";
 import SearchIcon from "@material-ui/icons/SearchTwoTone";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorderTwoTone";
 import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
+import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -22,8 +23,11 @@ class UI extends Component {
   };
 
   render() {
-    const { loggedIn } = this.props.users.loggedIn;
-    let loginMarkup = !loggedIn ? (
+    const { loggedIn } = this.props.users;
+
+    let loginMarkup = loggedIn ? (
+      <>Welcome {this.props.users.credentials.username}!</>
+    ) : (
       <>
         <Button
           label="Login"
@@ -42,13 +46,9 @@ class UI extends Component {
           Register
         </Button>
       </>
-    ) : (
-      <>User Logged In</>
     );
 
     let logoutMarkup = loggedIn ? (
-      <>User Not Logged-In</>
-    ) : (
       <>
         <Button
           label="logout"
@@ -61,31 +61,14 @@ class UI extends Component {
           Logout
         </Button>
       </>
+    ) : (
+      <></>
     );
 
     return (
       <div>
         <AppBar position="static">
           <Toolbar>
-            <IconButton edge="start" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            {/* <Button
-              label="Login"
-              startIcon={<LoginIcon />}
-              component={Link}
-              to="/login"
-            >
-              Login
-            </Button>
-            <Button
-              label="Register"
-              startIcon={<RegisterIcon />}
-              component={Link}
-              to="/register"
-            >
-              Register
-            </Button> */}
             {loginMarkup}
             <Button
               label="Search"
@@ -103,17 +86,16 @@ class UI extends Component {
             >
               Favorite
             </Button>
-            <Typography variant="h6"></Typography>
-            {/* <Button
-              label="logout"
-              startIcon={<LogoutIcon />}
-              onClick={() => {
-                console.log("I Have Been Clicked");
-                this.props.LogoutUser();
-              }}
+            <Button
+              label="Settings"
+              startIcon={<SettingsIcon />}
+              component={Link}
+              to="/Settings"
             >
-              Logout
-            </Button> */}
+              Settings
+            </Button>
+            <Typography variant="h6"></Typography>
+
             {logoutMarkup}
           </Toolbar>
         </AppBar>
