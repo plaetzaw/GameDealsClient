@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import GameSearch from "../components/gameSearch";
-import GameCard from "../components/gameCard";
 
 export class search extends Component {
   constructor() {

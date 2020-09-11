@@ -8,6 +8,7 @@ import {
   LOADING_DATA,
   SEARCH_FOR_GAME_BY_TITLE,
   SET_GAME_TO_FAVORITES,
+  DELETE_GAME_FROM_FAVORITES,
 } from "./actionTypes";
 
 // Set JWT Token
@@ -85,4 +86,24 @@ export const SubmitToFavorites = (gameObj) => (dispatch) => {
       dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
     })
     .catch((err) => console.log(err));
+};
+
+// Delete Game from Favorites (and calls the updated Favorites)
+export const DeleteFromFavorites = (data) => (dispatch) => {
+  console.log(data);
+  let id = { id: data.id };
+  let userID = { userID: data.userID };
+  console.log("Deleting item from favorites");
+  axios
+    .post("http://localhost:8080/deleteFavorite", id)
+    .then(() => {
+      dispatch({ type: DELETE_GAME_FROM_FAVORITES });
+      axios
+        .post("http://localhost:8080/viewSavedGames", userID)
+        .then((favorites) => {
+          dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
+        })
+        .catch((err) => console.error(err));
+    })
+    .catch((err) => console.error(err));
 };

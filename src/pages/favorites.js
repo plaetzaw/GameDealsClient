@@ -3,6 +3,7 @@ import GameCard from "../components/gameCard";
 import { GetUserGames } from "../redux/actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Grid from "@material-ui/core/Grid";
 
 export class favorites extends Component {
   constructor() {
@@ -33,7 +34,17 @@ export class favorites extends Component {
       <div>
         This page will display a feed of games with the option to favorites for
         a specific game or specific title
-        {gameMarkup}
+        <Grid
+          container
+          direction="row-reverse"
+          justify="space-evenly"
+          alignItems="flex-start"
+          // spacing={3}
+        >
+          <Grid item xs={6}>
+            {gameMarkup}
+          </Grid>
+        </Grid>
       </div>
     );
   }
