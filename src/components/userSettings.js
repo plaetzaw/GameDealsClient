@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import PlayForWorkIcon from "@material-ui/icons/PlayForWork";
 import { Button } from "@material-ui/core";
+import {
+  UpdateEmail,
+  UpdateUsername,
+  UpdatePassword,
+} from "../redux/actions/actions";
 
-export class userSettings extends Component {
+class userSettings extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +23,7 @@ export class userSettings extends Component {
   updateUsername = (e) => {
     e.preventDefault();
     const newUsername = {
+      id: this.props.users.credentials.id,
       username: this.state.username,
     };
     console.log(newUsername);
@@ -25,6 +33,7 @@ export class userSettings extends Component {
   updateEmail = (e) => {
     e.preventDefault();
     const newEmail = {
+      id: this.props.users.credentials.id,
       email: this.state.email,
     };
     console.log(newEmail);
@@ -34,6 +43,7 @@ export class userSettings extends Component {
   updatePassword = (e) => {
     e.preventDefault();
     const newPassword = {
+      id: this.props.users.credentials.id,
       password: this.state.password,
     };
     console.log(newPassword);
@@ -100,7 +110,9 @@ export class userSettings extends Component {
             color="default"
             startIcon={<PlayForWorkIcon />}
             onClick={this.updateEmail}
-          ></Button>
+          >
+            Submit
+          </Button>
         </form>
         <h3>Update Password</h3>
 
@@ -134,4 +146,22 @@ export class userSettings extends Component {
   }
 }
 
-export default userSettings;
+userSettings.propTypes = {
+  UpdateEmail: PropTypes.func.isRequired,
+  UpdateUsername: PropTypes.func.isRequired,
+  UpdatePassword: PropTypes.func.isRequired,
+  users: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+  users: state.users,
+});
+
+const mapDispatchToProps = {
+  UpdateEmail,
+  UpdateUsername,
+  UpdatePassword,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(userSettings);
