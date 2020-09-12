@@ -74,6 +74,7 @@ class gameCardMini extends Component {
       steamRatingPercent,
       metacriticLink,
       thumb,
+      dealID,
     } = this.props.data;
 
     return (
@@ -104,6 +105,14 @@ class gameCardMini extends Component {
               <a href={`https://www.metacritic.com/${metacriticLink}`}>
                 View On MetaCritic
               </a>
+            </Button>
+            <Button
+              size="medium"
+              color="primary"
+              href={`https://www.cheapshark.com/redirect?dealID=${dealID}
+            `}
+            >
+              View this deal!
             </Button>
           </div>
         </CardActionArea>

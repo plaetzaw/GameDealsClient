@@ -25,6 +25,7 @@ class gameCard extends Component {
       id,
       title,
       gameID,
+      dealID,
       savings,
       thumb,
       salePrice,
@@ -84,6 +85,14 @@ class gameCard extends Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
+          <Button
+            size="medium"
+            color="primary"
+            href={`https://www.cheapshark.com/redirect?dealID=${dealID}
+            `}
+          >
+            View this deal!
+          </Button>
           <Button
             size="medium"
             color="primary"
