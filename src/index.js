@@ -11,6 +11,7 @@ import Search from "./pages/search";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Settings from "./pages/settings";
+import advancedSearch from "./components/advanceSearch";
 import Toast from "./components/toast";
 
 //Routing
@@ -36,6 +37,7 @@ ReactDOM.render(
         <ProtectedRoute exact path="/search" component={Search} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
+        <Route exact path="/advancedSearch" component={advancedSearch} />
         <Route exact path="/Toast" component={Toast} />
       </Switch>
     </BrowserRouter>

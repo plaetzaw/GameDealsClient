@@ -142,3 +142,16 @@ export const UpdatePassword = (password) => () => {
     }
   });
 };
+
+//Advanced Search
+export const AdvancedSearch = (data) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  console.log("Searching for games by title");
+  axios
+    .post("http://localhost:8080/advancedSearch", data)
+    .then((searchedGames) => {
+      console.log(searchedGames);
+      dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
+    })
+    .catch((err) => console.log(err));
+};
