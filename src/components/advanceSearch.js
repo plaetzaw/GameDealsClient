@@ -9,7 +9,6 @@ import GameCardMini from "./gameCardMini";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
-import Checkbox from "@material-ui/core/Checkbox";
 import Switch from "@material-ui/core/Switch";
 
 class advancedSearch extends Component {
@@ -17,8 +16,8 @@ class advancedSearch extends Component {
     super();
     this.state = {
       title: "",
-      maxPrice: "",
-      checked: true,
+      value: 30,
+      checked: false,
     };
   }
 
@@ -28,24 +27,25 @@ class advancedSearch extends Component {
     });
   };
 
-  //   handleCheck = () => {
-  //     this.setState((state) => ({
-  //       isOpen: !state.isOpen,
-  //     }));
-  //   };
-
-  onCheck = (e) => {
+  handleSlide = (name) => (e, value) => {
     this.setState({
-      checked: e.target.checked,
+      [name]: value,
     });
+    console.log(this.state.value);
+  };
+
+  handleCheck = () => {
+    this.setState((state) => ({
+      checked: !state.checked,
+    }));
   };
 
   onSearch = (e) => {
     e.preventDefault();
     const gameInfo = {
       gameTitle: this.state.title,
-      maxPrice: this.state.maxPrice,
-      onSale: this.state.onSale,
+      value: this.state.value,
+      checked: this.state.checked,
     };
     console.log(gameInfo);
     this.props.AdvancedSearch(gameInfo);
@@ -55,6 +55,8 @@ class advancedSearch extends Component {
     function valuetext(value) {
       return `${value}`;
     }
+
+    const { value } = this.state;
 
     const marks = [
       {
@@ -137,25 +139,24 @@ class advancedSearch extends Component {
               Select Maximum Price
             </Typography>
             <Slider
-              name="maxPrice"
+              name="value"
               defaultValue={60}
               getAriaValueText={valuetext}
-              onChange={(e) => this.handleChange(e)}
+              onChange={this.handleSlide("value")}
               aria-labelledby="discrete-slider-always"
               step={5}
               marks={marks}
               valueLabelDisplay="on"
+              value={value}
               min={0}
               max={60}
             />
           </div>
           <div>
             <Switch
-              checked={this.onSale}
-              onChange={(e) => this.handleChange(e)}
+              checked={this.state.checked}
               name="onSale"
               onChange={this.handleCheck}
-              checked={this.state.checked}
               inputProps={{ "aria-label": "secondary checkbox" }}
             />
             Game on Sale
