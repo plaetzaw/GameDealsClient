@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { DeleteFromFavorites } from "../redux/actions/actions";
+import { DeleteFromFavorites, SetAlert } from "../redux/actions/actions";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,6 +8,10 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import UnFavorite from "@material-ui/icons/BookmarkBorder";
+import Vision from "@material-ui/icons/Visibility";
+import Money from "@material-ui/icons/MonetizationOn";
+import Alert from "@material-ui/icons/AddAlert";
 // import Typography from "@material-ui/core/Typography";
 
 class gameCard extends Component {
@@ -19,6 +23,18 @@ class gameCard extends Component {
       userID: userID,
     };
     this.props.DeleteFromFavorites(GameObj);
+  };
+
+  handleAlert = () => {
+    let gameID = this.props.data.gameID;
+    let email = this.props.users.credentials.email;
+    let price = this.props.data.salePrice;
+    let alertObj = {
+      gameID: gameID,
+      email: email,
+      price: price,
+    };
+    this.props.SetAlert(alertObj);
   };
   render() {
     const {
@@ -43,10 +59,11 @@ class gameCard extends Component {
 
     let steamMarkup = steamCheckerBool ? (
       <>
-        <h1>
+        <p>
+          <b>Steam:</b>
           {title} is rated at {steamRatingPercent}% based on {steamRatingCount}{" "}
           reviews classifying the game as {steamRatingText}
-        </h1>
+        </p>
       </>
     ) : (
       <>
@@ -56,52 +73,68 @@ class gameCard extends Component {
 
     let saleMarkup = !isOnSale ? (
       <>
-        <h3>
+        <p>
           This game is not currently on sale. It's current price is ${salePrice}
-        </h3>
+        </p>
       </>
     ) : (
       <>
         <h1>This game is currently on Sale!</h1>
-        Current Price: {salePrice} Normal Price: {normalPrice} Savings %:
-        {savings}
+        Current Price: ${salePrice} Normal Price: ${normalPrice} Savings:{" "}
+        {savings}%
       </>
     );
     return (
-      <Card style={{ backgroundColor: scoreColor }}>
+      <Card>
         <CardActionArea>
           <CardMedia component="img" src={thumb} />
-          <CardContent>
+          <CardContent style={{ backgroundColor: scoreColor }}>
             <h1>{title}</h1>
             <br />
             <h2>Ratings</h2>
             {steamMarkup}
             <br />
-            <div style={{ backgroundColor: scoreColor }}>
-              Metacritic score: {metacriticScore}/100 Pricing
-              <br />
-            </div>
+            <b>Metacritic</b> {metacriticScore}/100
+            <br />
+            <h2>Prices</h2>
             {saleMarkup}
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button
+            style={{ backgroundColor: "teal" }}
             size="medium"
-            color="primary"
+            startIcon={<Money />}
             href={`https://www.cheapshark.com/redirect?dealID=${dealID}
             `}
           >
-            View this deal!
+            <b>View this deal</b>
           </Button>
           <Button
+            style={{ backgroundColor: "pink" }}
             size="medium"
-            color="primary"
+            startIcon={<Vision />}
             href={`https://www.metacritic.com/${metacriticLink}`}
           >
-            View on MetaCritic!
+            <b>View on MetaCritic!</b>
           </Button>
-          <Button size="medium" color="secondary" onClick={this.handleDelete}>
-            Delete from Favorites
+          <Button
+            style={{ backgroundColor: "yellow" }}
+            size="medium"
+            color="secondary"
+            startIcon={<UnFavorite />}
+            onClick={this.handleDelete}
+          >
+            <b>Remove from Favorites</b>
+          </Button>
+          <Button
+            style={{ backgroundColor: "orange" }}
+            size="medium"
+            color="secondary"
+            startIcon={<Alert />}
+            onClick={this.handleAlert}
+          >
+            <b>Set Price Drop Alert</b>
           </Button>
         </CardActions>
       </Card>
@@ -111,6 +144,7 @@ class gameCard extends Component {
 
 gameCard.propTypes = {
   DeleteFromFavorites: PropTypes.func.isRequired,
+  SetAlert: PropTypes.func.isRequired,
   users: PropTypes.object.isRequired,
 };
 
@@ -120,6 +154,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   DeleteFromFavorites,
+  SetAlert,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(gameCard);

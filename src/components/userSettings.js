@@ -20,6 +20,13 @@ class userSettings extends Component {
     };
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.name);
+  };
+
   updateUsername = (e) => {
     e.preventDefault();
     const newUsername = {

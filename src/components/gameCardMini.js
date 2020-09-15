@@ -9,8 +9,9 @@ import {
   CardMedia,
   Button,
 } from "@material-ui/core";
-import Favorite from "@material-ui/icons/FavoriteOutlined";
-import Eyes from "@material-ui/icons/PanoramaFishEye";
+import Favorite from "@material-ui/icons/Bookmark";
+import Vision from "@material-ui/icons/Visibility";
+import Money from "@material-ui/icons/MonetizationOn";
 import { ButtonGroup } from "@material-ui/core";
 import { SubmitToFavorites } from "../redux/actions/actions";
 
@@ -68,6 +69,7 @@ class gameCardMini extends Component {
   render() {
     const {
       title,
+      normalPrice,
       salePrice,
       metacriticScore,
       steamRatingPercent,
@@ -87,9 +89,11 @@ class gameCardMini extends Component {
             Steam Score: {steamRatingPercent}
             <br />
             Current Price: {salePrice}
+            <br />
+            Normal Price: {normalPrice}
           </CardContent>
 
-          <div style={{ backgroundColor: "red" }}>
+          <div style={{ backgroundColor: "magenta" }}>
             <Button
               size="small"
               color="primary"
@@ -99,15 +103,19 @@ class gameCardMini extends Component {
               Add To Favorites
             </Button>
           </div>
-          <div style={{ backgroundColor: "teal" }}>
-            <Button size="small" color="secondary" startIcon={<Eyes />}>
+          <div style={{ backgroundColor: "pink" }}>
+            <Button size="small" color="secondary" startIcon={<Vision />}>
               <a href={`https://www.metacritic.com/${metacriticLink}`}>
                 View On MetaCritic
               </a>
             </Button>
+          </div>
+          <div style={{ backgroundColor: "lightgreen" }}>
+            {/* <div style={{ backgroundColor: "yellow" }}> */}
             <Button
               size="medium"
               color="primary"
+              startIcon={<Money />}
               href={`https://www.cheapshark.com/redirect?dealID=${dealID}
             `}
             >

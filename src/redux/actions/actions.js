@@ -155,3 +155,18 @@ export const AdvancedSearch = (data) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+//Set Alert
+export const SetAlert = (data) => () => {
+  console.log(data);
+  console.log("Setting alert");
+  axios.post("http://localhost:8080/setAlert", data).then((res) => {
+    if (res.status === 200) {
+      console.log(
+        `Alert set ${data.gameID} to ${data.email} for ${data.price}`
+      );
+    } else {
+      console.log("Alert not set, please try again");
+    }
+  });
+};
