@@ -31,9 +31,18 @@ export class favorites extends Component {
     });
 
     return (
-      <div>
-        This page will display a feed of games with the option to favorites for
-        a specific game or specific title
+      <div
+        style={{
+          border: "#BE9EFF 1px solid",
+          // padding: "5rem",
+          backgroundColor: "rgba(190, 158, 255, 0.2)",
+          borderRadius: "3rem",
+          marginTop: "1px",
+          display: "grid",
+          // justifyContent: "center",
+          // alignItems: "center",
+        }}
+      >
         <Grid
           container
           direction="row-reverse"

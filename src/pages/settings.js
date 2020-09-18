@@ -5,7 +5,6 @@ export class settings extends Component {
   render() {
     return (
       <div>
-        This page will display the users settings
         <UserSettings />
       </div>
     );

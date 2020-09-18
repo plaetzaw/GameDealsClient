@@ -5,17 +5,13 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  CardActions,
   CardMedia,
   Button,
 } from "@material-ui/core";
 import Favorite from "@material-ui/icons/Bookmark";
 import Vision from "@material-ui/icons/Visibility";
 import Money from "@material-ui/icons/MonetizationOn";
-import { ButtonGroup } from "@material-ui/core";
 import { SubmitToFavorites } from "../redux/actions/actions";
-
-// import Typography from "@material-ui/core/Typography";
 
 class gameCardMini extends Component {
   onSubmit = (e) => {
@@ -63,7 +59,7 @@ class gameCardMini extends Component {
       userID: userID,
     };
     this.props.SubmitToFavorites(GameObj);
-    console.log("New task posted");
+    alert(`${this.props.data.title} added to your favorites list!`);
   };
 
   render() {
@@ -76,13 +72,18 @@ class gameCardMini extends Component {
       metacriticLink,
       thumb,
       dealID,
+      dealRating,
     } = this.props.data;
 
     return (
       <Card>
         <CardActionArea>
-          <CardMedia component="img" src={thumb} />
-          <CardContent>
+          <CardMedia
+            component="img"
+            src={thumb}
+            style={{ maxWidth: "300px", maxHeight: "150px" }}
+          />
+          <CardContent style={{ maxWidth: "200px" }}>
             <h2>{title}</h2>
             MetaCritic Score: {metacriticScore}
             <br />
@@ -91,6 +92,8 @@ class gameCardMini extends Component {
             Current Price: {salePrice}
             <br />
             Normal Price: {normalPrice}
+            <br />
+            Sale Rating: {dealRating}/10
           </CardContent>
 
           <div style={{ backgroundColor: "magenta" }}>

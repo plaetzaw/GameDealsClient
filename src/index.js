@@ -32,13 +32,13 @@ ReactDOM.render(
     <BrowserRouter>
       <UI />
       <Switch>
-        <AuthRoute exact path="/Login" component={Login} />
+        <AuthRoute exact path="/" component={Login} />
         <Route exact path="/Register" component={Register} />
-        <ProtectedRoute exact path="/search" component={Search} />
+        <Route exact path="/search" component={advancedSearch} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
-        <Route exact path="/advancedSearch" component={advancedSearch} />
-        <Route exact path="/Toast" component={Toast} />
+        {/* <Route exact path="/advancedSearch" component={advancedSearch} /> */}
+        {/* <Route exact path="/Toast" component={Toast} /> */}
       </Switch>
     </BrowserRouter>
   </Provider>,

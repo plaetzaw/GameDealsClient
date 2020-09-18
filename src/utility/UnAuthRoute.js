@@ -7,7 +7,7 @@ const UnAuthRoute = ({ component: Component, authenticated, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      loggedIn === false ? <Redirect to="/login" /> : <Component {...props} />
+      loggedIn === false ? <Redirect to="/" /> : <Component {...props} />
     }
   />
 );

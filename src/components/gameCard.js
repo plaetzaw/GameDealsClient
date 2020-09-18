@@ -12,6 +12,8 @@ import UnFavorite from "@material-ui/icons/BookmarkBorder";
 import Vision from "@material-ui/icons/Visibility";
 import Money from "@material-ui/icons/MonetizationOn";
 import Alert from "@material-ui/icons/AddAlert";
+import Toast from "../components/toast";
+
 // import Typography from "@material-ui/core/Typography";
 
 class gameCard extends Component {
@@ -35,6 +37,9 @@ class gameCard extends Component {
       price: price,
     };
     this.props.SetAlert(alertObj);
+    alert(
+      `Email alert set for ${this.props.data.title} at ${price} to ${email}`
+    );
   };
   render() {
     const {

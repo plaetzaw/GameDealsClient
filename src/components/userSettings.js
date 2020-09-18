@@ -31,7 +31,8 @@ class userSettings extends Component {
     e.preventDefault();
     const newUsername = {
       id: this.props.users.credentials.id,
-      username: this.state.username,
+      username: this.props.users.credentials.username,
+      updatedusername: this.state.username,
     };
     console.log(newUsername);
     this.props.UpdateUsername(newUsername);

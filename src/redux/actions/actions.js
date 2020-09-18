@@ -58,7 +58,8 @@ export const GetUserGames = (userID) => (dispatch) => {
   axios
     .post("http://localhost:8080/viewSavedGames", userID)
     .then((favorites) => {
-      dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
+      let favoriteData = favorites.data.reverse();
+      dispatch({ type: GET_FAVORITE_GAMES, payload: favoriteData });
     })
     .catch((err) => console.log(err));
 };

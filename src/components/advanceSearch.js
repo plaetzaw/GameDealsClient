@@ -126,7 +126,18 @@ class advancedSearch extends Component {
     );
 
     return (
-      <div>
+      <div
+        style={{
+          border: "#BE9EFF 1px solid",
+          padding: "2rem",
+          backgroundColor: "rgba(190, 158, 255, 0.2)",
+          borderRadius: "3rem",
+          marginTop: "1px",
+          display: "grid",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <form>
           <TextField
             name="title"
@@ -134,6 +145,7 @@ class advancedSearch extends Component {
             placeholder="Game Title"
             onChange={(e) => this.handleChange(e)}
           />
+          <br />
           <div style={{ width: 500, height: 75 }}>
             <Typography id="discrete-slider-always" gutterBottom>
               Select Maximum Price
@@ -152,6 +164,7 @@ class advancedSearch extends Component {
               max={60}
             />
           </div>
+          <br />
           <div>
             <Switch
               checked={this.state.checked}
@@ -161,6 +174,7 @@ class advancedSearch extends Component {
             />
             Game on Sale
           </div>
+          <br />
           <Button
             variant="contained"
             color="default"
@@ -170,7 +184,12 @@ class advancedSearch extends Component {
             Search!
           </Button>
         </form>
-        <Grid container spacing={3}>
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="stretch"
+        >
           {searchCard}
         </Grid>
       </div>

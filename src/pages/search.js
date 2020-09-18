@@ -13,9 +13,18 @@ export class search extends Component {
 
   render() {
     return (
-      <div>
-        This page will display a feed of games with the option to search for a
-        specific game or specific title
+      <div
+        style={{
+          border: "#BE9EFF 1px solid",
+          padding: "2rem",
+          backgroundColor: "rgba(190, 158, 255, 0.2)",
+          borderRadius: "3rem",
+          marginTop: "1px",
+          display: "grid",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <GameSearch />
       </div>
     );

@@ -46,7 +46,6 @@ class gameSearch extends Component {
 
     return (
       <div>
-        This component will search for games
         <form>
           <TextField
             name="title"
@@ -63,8 +62,10 @@ class gameSearch extends Component {
             Search!
           </Button>
         </form>
-        <Grid container spacing={3}>
-          {searchCard}
+        <Grid container spacing={3} justify="center">
+          <Grid item xs={3}>
+            {searchCard}
+          </Grid>
         </Grid>
       </div>
     );
