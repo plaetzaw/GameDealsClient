@@ -61,7 +61,7 @@ class gameCard extends Component {
       normalPrice,
       isOnSale,
       metacriticScore,
-      metacriticLink,
+      // metacriticLink,
       steamRatingText,
       steamRatingPercent,
       steamRatingCount,
