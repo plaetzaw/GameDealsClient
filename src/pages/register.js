@@ -24,8 +24,8 @@ export class Register extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    console.log(newUserData);
     this.props.RegisterUser(newUserData, this.props.history);
+    alert("User successfully registered! You may now login");
   };
 
   handleChange = (e) => {
@@ -74,6 +74,7 @@ export class Register extends Component {
             placeholder="Password"
             onChange={(e) => this.handleChange(e)}
             variant="outlined"
+            type="password"
           />
           <Button
             variant="contained"

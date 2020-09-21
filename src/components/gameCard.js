@@ -38,6 +38,18 @@ class gameCard extends Component {
       `Email alert set for ${this.props.data.title} at ${price} to ${email}`
     );
   };
+
+  openMetacritic = (e) => {
+    e.preventDefault();
+    window.open(`https://www.metacritic.com/${this.props.data.metacriticLink}`);
+  };
+
+  openDeal = (e) => {
+    e.preventDefault();
+    window.open(
+      `https://www.cheapshark.com/redirect?dealID=${this.props.data.dealID}`
+    );
+  };
   render() {
     const {
       title,
@@ -106,8 +118,7 @@ class gameCard extends Component {
             style={{ backgroundColor: "teal" }}
             size="medium"
             startIcon={<Money />}
-            href={`https://www.cheapshark.com/redirect?dealID=${dealID}
-            `}
+            onClick={this.openDeal}
           >
             <b>View this deal</b>
           </Button>
@@ -115,7 +126,7 @@ class gameCard extends Component {
             style={{ backgroundColor: "pink" }}
             size="medium"
             startIcon={<Vision />}
-            href={`https://www.metacritic.com/${metacriticLink}`}
+            onClick={this.openMetacritic}
           >
             <b>View on MetaCritic!</b>
           </Button>

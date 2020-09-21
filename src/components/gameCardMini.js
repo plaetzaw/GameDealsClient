@@ -62,6 +62,18 @@ class gameCardMini extends Component {
     alert(`${this.props.data.title} added to your favorites list!`);
   };
 
+  openMetacritic = (e) => {
+    e.preventDefault();
+    window.open(`https://www.metacritic.com/${this.props.data.metacriticLink}`);
+  };
+
+  openDeal = (e) => {
+    e.preventDefault();
+    window.open(
+      `https://www.cheapshark.com/redirect?dealID=${this.props.data.dealID}`
+    );
+  };
+
   render() {
     const {
       title,
@@ -107,10 +119,13 @@ class gameCardMini extends Component {
             </Button>
           </div>
           <div style={{ backgroundColor: "pink" }}>
-            <Button size="small" color="secondary" startIcon={<Vision />}>
-              <a href={`https://www.metacritic.com/${metacriticLink}`}>
-                View On MetaCritic
-              </a>
+            <Button
+              size="small"
+              color="secondary"
+              startIcon={<Vision />}
+              onClick={this.openMetacritic}
+            >
+              View On MetaCritic
             </Button>
           </div>
           <div style={{ backgroundColor: "lightgreen" }}>
@@ -119,8 +134,9 @@ class gameCardMini extends Component {
               size="medium"
               color="primary"
               startIcon={<Money />}
-              href={`https://www.cheapshark.com/redirect?dealID=${dealID}
-            `}
+              onClick={this.openDeal}
+              //   href={`https://www.cheapshark.com/redirect?dealID=${dealID}
+              // `}
             >
               View this deal!
             </Button>
