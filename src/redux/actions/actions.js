@@ -21,13 +21,15 @@ export const setAuthorizationHeader = (token) => {
 // Login
 export const LoginUser = (userData) => (dispatch) => {
   console.log("Beginning login process");
-  axios.post("http://localhost:8080/login", userData).then((results) => {
-    setAuthorizationHeader(results.data.accessToken);
-    dispatch({ type: SET_AUTHENTICATED });
-    let decodedToken = jwtDecode(results.data.token);
-    console.log(decodedToken);
-    dispatch({ type: LOGGED_IN, payload: decodedToken });
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/login", userData)
+    .then((results) => {
+      setAuthorizationHeader(results.data.accessToken);
+      dispatch({ type: SET_AUTHENTICATED });
+      let decodedToken = jwtDecode(results.data.token);
+      console.log(decodedToken);
+      dispatch({ type: LOGGED_IN, payload: decodedToken });
+    });
 };
 
 // Logout
@@ -41,13 +43,15 @@ export const LogoutUser = () => (dispatch) => {
 // Register
 export const RegisterUser = (newUserData) => () => {
   console.log("Beginning new user registration");
-  axios.post("http://localhost:8080/register", newUserData).then((res) => {
-    if (res.status === 200) {
-      console.log("Registration Successful");
-    } else {
-      console.log("Registration Failed. Please try again");
-    }
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/register", newUserData)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Registration Successful");
+      } else {
+        console.log("Registration Failed. Please try again");
+      }
+    });
 };
 // Get User Favorites
 export const GetUserGames = (userID) => (dispatch) => {
@@ -56,7 +60,7 @@ export const GetUserGames = (userID) => (dispatch) => {
   console.log(userID);
   console.log(typeof userID);
   axios
-    .post("http://localhost:8080/viewSavedGames", userID)
+    .post("https://thegametracker.herokuapp.com/viewSavedGames", userID)
     .then((favorites) => {
       let favoriteData = favorites.data.reverse();
       dispatch({ type: GET_FAVORITE_GAMES, payload: favoriteData });
@@ -69,7 +73,7 @@ export const GetGamesByTitle = (gameTitle) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   console.log("Searching for games by title");
   axios
-    .post("http://localhost:8080/searchTitle", gameTitle)
+    .post("https://thegametracker.herokuapp.com/searchTitle", gameTitle)
     .then((searchedGames) => {
       console.log(searchedGames);
       dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
@@ -81,7 +85,7 @@ export const GetGamesByTitle = (gameTitle) => (dispatch) => {
 export const SubmitToFavorites = (gameObj) => (dispatch) => {
   console.log("Submitting game to favorites database");
   axios
-    .post("http://localhost:8080/createGameEntry", gameObj)
+    .post("https://thegametracker.herokuapp.com/createGameEntry", gameObj)
     .then((favorites) => {
       console.log(favorites);
       dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
@@ -96,11 +100,11 @@ export const DeleteFromFavorites = (data) => (dispatch) => {
   let userID = { userID: data.userID };
   console.log("Deleting item from favorites");
   axios
-    .post("http://localhost:8080/deleteFavorite", id)
+    .post("https://thegametracker.herokuapp.com/deleteFavorite", id)
     .then(() => {
       dispatch({ type: DELETE_GAME_FROM_FAVORITES });
       axios
-        .post("http://localhost:8080/viewSavedGames", userID)
+        .post("https://thegametracker.herokuapp.com/viewSavedGames", userID)
         .then((favorites) => {
           dispatch({ type: GET_FAVORITE_GAMES, payload: favorites.data });
         })
@@ -112,36 +116,42 @@ export const DeleteFromFavorites = (data) => (dispatch) => {
 //Update Username
 export const UpdateUsername = (username) => () => {
   console.log(username);
-  axios.post("http://localhost:8080/updateUsername", username).then((res) => {
-    if (res.status === 200) {
-      console.log("Update Successful");
-    } else {
-      console.log("Update Failed. Please try again");
-    }
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/updateUsername", username)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Update Successful");
+      } else {
+        console.log("Update Failed. Please try again");
+      }
+    });
 };
 
 //Update Email
 export const UpdateEmail = (email) => () => {
   console.log(email);
-  axios.post("http://localhost:8080/updateEmail", email).then((res) => {
-    if (res.status === 200) {
-      console.log("Update Successful");
-    } else {
-      console.log("Update Failed. Please try again");
-    }
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/updateEmail", email)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Update Successful");
+      } else {
+        console.log("Update Failed. Please try again");
+      }
+    });
 };
 
 //Update Password
 export const UpdatePassword = (password) => () => {
-  axios.post("http://localhost:8080/updatePassword", password).then((res) => {
-    if (res.status === 200) {
-      console.log("Update Successful");
-    } else {
-      console.log("Update Failed. Please try again");
-    }
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/updatePassword", password)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Update Successful");
+      } else {
+        console.log("Update Failed. Please try again");
+      }
+    });
 };
 
 //Advanced Search
@@ -149,7 +159,7 @@ export const AdvancedSearch = (data) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   console.log("Searching for games by title");
   axios
-    .post("http://localhost:8080/advancedSearch", data)
+    .post("https://thegametracker.herokuapp.com/advancedSearch", data)
     .then((searchedGames) => {
       console.log(searchedGames);
       dispatch({ type: SEARCH_FOR_GAME_BY_TITLE, payload: searchedGames.data });
@@ -161,13 +171,15 @@ export const AdvancedSearch = (data) => (dispatch) => {
 export const SetAlert = (data) => () => {
   console.log(data);
   console.log("Setting alert");
-  axios.post("http://localhost:8080/setAlert", data).then((res) => {
-    if (res.status === 200) {
-      console.log(
-        `Alert set ${data.gameID} to ${data.email} for ${data.price}`
-      );
-    } else {
-      console.log("Alert not set, please try again");
-    }
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/setAlert", data)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log(
+          `Alert set ${data.gameID} to ${data.email} for ${data.price}`
+        );
+      } else {
+        console.log("Alert not set, please try again");
+      }
+    });
 };

@@ -7,12 +7,10 @@ import UI from "./components/Layout/UI";
 
 //Pages
 import Favorites from "./pages/favorites";
-import Search from "./pages/search";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Settings from "./pages/settings";
 import advancedSearch from "./components/advanceSearch";
-import Toast from "./components/toast";
 
 //Routing
 import { BrowserRouter, Switch, Route } from "react-router-dom";
