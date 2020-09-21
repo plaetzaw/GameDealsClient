@@ -81,9 +81,9 @@ class gameCardMini extends Component {
       salePrice,
       metacriticScore,
       steamRatingPercent,
-      metacriticLink,
+      // metacriticLink,
       thumb,
-      dealID,
+      // dealID,
       dealRating,
     } = this.props.data;
 

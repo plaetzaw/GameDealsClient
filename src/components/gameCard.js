@@ -54,7 +54,7 @@ class gameCard extends Component {
     const {
       title,
       // gameID,
-      dealID,
+      // dealID,
       savings,
       thumb,
       salePrice,
