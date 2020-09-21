@@ -32,7 +32,7 @@ ReactDOM.render(
       <Switch>
         <AuthRoute exact path="/" component={Login} />
         <Route exact path="/Register" component={Register} />
-        <Route exact path="/search" component={advancedSearch} />
+        <ProtectedRoute exact path="/search" component={advancedSearch} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
         {/* <Route exact path="/advancedSearch" component={advancedSearch} /> */}
