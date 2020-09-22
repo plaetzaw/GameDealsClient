@@ -99,7 +99,11 @@ class gameCard extends Component {
     return (
       <Card>
         <CardActionArea>
-          <CardMedia component="img" src={thumb} />
+          <CardMedia
+            component="img"
+            src={thumb}
+            style={{ maxWidth: "300px", backgroundColor: scoreColor }}
+          />
           <CardContent style={{ backgroundColor: scoreColor }}>
             <h1>{title}</h1>
             <br />
