@@ -50,7 +50,7 @@ export class favorites extends Component {
           alignItems="flex-start"
           // spacing={3}
         >
-          <Grid item xs={6}>
+          <Grid item xs={12} md={12} lg={"auto"} xl={"auto"}>
             {gameMarkup}
           </Grid>
         </Grid>

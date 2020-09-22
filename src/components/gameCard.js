@@ -4,7 +4,6 @@ import { DeleteFromFavorites, SetAlert } from "../redux/actions/actions";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
@@ -112,43 +111,41 @@ class gameCard extends Component {
             <h2>Prices</h2>
             {saleMarkup}
           </CardContent>
+          <div style={{ backgroundColor: "teal" }}>
+            <Button size="medium" startIcon={<Money />} onClick={this.openDeal}>
+              <b>View this deal</b>
+            </Button>
+          </div>
+          <div style={{ backgroundColor: "pink" }}>
+            <Button
+              size="medium"
+              startIcon={<Vision />}
+              onClick={this.openMetacritic}
+            >
+              <b>View on MetaCritic!</b>
+            </Button>
+          </div>
+          <div style={{ backgroundColor: "yellow" }}>
+            <Button
+              size="medium"
+              color="secondary"
+              startIcon={<UnFavorite />}
+              onClick={this.handleDelete}
+            >
+              <b>Remove from Favorites</b>
+            </Button>
+          </div>
+          <div style={{ backgroundColor: "orange" }}>
+            <Button
+              size="medium"
+              color="secondary"
+              startIcon={<Alert />}
+              onClick={this.handleAlert}
+            >
+              <b>Set Price Drop Alert</b>
+            </Button>
+          </div>
         </CardActionArea>
-        <CardActions>
-          <Button
-            style={{ backgroundColor: "teal" }}
-            size="medium"
-            startIcon={<Money />}
-            onClick={this.openDeal}
-          >
-            <b>View this deal</b>
-          </Button>
-          <Button
-            style={{ backgroundColor: "pink" }}
-            size="medium"
-            startIcon={<Vision />}
-            onClick={this.openMetacritic}
-          >
-            <b>View on MetaCritic!</b>
-          </Button>
-          <Button
-            style={{ backgroundColor: "yellow" }}
-            size="medium"
-            color="secondary"
-            startIcon={<UnFavorite />}
-            onClick={this.handleDelete}
-          >
-            <b>Remove from Favorites</b>
-          </Button>
-          <Button
-            style={{ backgroundColor: "orange" }}
-            size="medium"
-            color="secondary"
-            startIcon={<Alert />}
-            onClick={this.handleAlert}
-          >
-            <b>Set Price Drop Alert</b>
-          </Button>
-        </CardActions>
       </Card>
     );
   }

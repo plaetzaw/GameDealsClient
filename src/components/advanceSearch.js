@@ -129,9 +129,9 @@ class advancedSearch extends Component {
       <div
         style={{
           border: "#BE9EFF 1px solid",
-          padding: "2rem",
+          // padding: "2rem",
           backgroundColor: "rgba(190, 158, 255, 0.2)",
-          borderRadius: "3rem",
+          borderRadius: "1px",
           marginTop: "1px",
           display: "grid",
           justifyContent: "center",
@@ -146,7 +146,7 @@ class advancedSearch extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <div style={{ width: 500, height: 75 }}>
+          <div style={{ width: "75vh", height: 100 }}>
             <Typography id="discrete-slider-always" gutterBottom>
               Select Maximum Price
             </Typography>
@@ -187,10 +187,12 @@ class advancedSearch extends Component {
         <Grid
           container
           direction="row"
-          justify="flex-start"
-          alignItems="stretch"
+          // justify="flex-start"
+          // alignItems="stretch"
         >
-          {searchCard}
+          <Grid item xs={12} md={6} lg={3} xl={3}>
+            {searchCard}
+          </Grid>
         </Grid>
       </div>
     );

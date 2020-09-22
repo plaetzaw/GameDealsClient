@@ -63,7 +63,7 @@ class gameSearch extends Component {
           </Button>
         </form>
         <Grid container spacing={3} justify="center">
-          <Grid item xs={3}>
+          <Grid item xs={12} md={6} lg={3} xl={3}>
             {searchCard}
           </Grid>
         </Grid>

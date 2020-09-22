@@ -88,14 +88,18 @@ class gameCardMini extends Component {
     } = this.props.data;
 
     return (
-      <Card>
+      <Card
+      // style={{ width: "50vh", height: "50vh" }}
+      >
         <CardActionArea>
           <CardMedia
             component="img"
             src={thumb}
             style={{ maxWidth: "300px", maxHeight: "150px" }}
           />
-          <CardContent style={{ maxWidth: "200px" }}>
+          <CardContent
+          // style={{ width: "300px" }}
+          >
             <h2>{title}</h2>
             MetaCritic Score: {metacriticScore}
             <br />
@@ -129,14 +133,11 @@ class gameCardMini extends Component {
             </Button>
           </div>
           <div style={{ backgroundColor: "lightgreen" }}>
-            {/* <div style={{ backgroundColor: "yellow" }}> */}
             <Button
               size="medium"
               color="primary"
               startIcon={<Money />}
               onClick={this.openDeal}
-              //   href={`https://www.cheapshark.com/redirect?dealID=${dealID}
-              // `}
             >
               View this deal!
             </Button>
