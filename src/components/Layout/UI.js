@@ -46,10 +46,13 @@ class UI extends Component {
     let logoutMarkup = loggedIn ? (
       <>
         <Button
-          style={{ alignSelf: "left", justifyContent: "left" }}
+          style={{
+            alignSelf: "left",
+            justifyContent: "left",
+            color: "whitesmoke",
+          }}
           label="logout"
           startIcon={<LogoutIcon />}
-          style={{ color: "whitesmoke" }}
           onClick={() => {
             console.log("I Have Been Clicked");
             this.props.LogoutUser();
