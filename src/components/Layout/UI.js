@@ -29,12 +29,14 @@ class UI extends Component {
         <Button
           label="Login"
           startIcon={<LoginIcon />}
+          style={{ color: "whitesmoke" }}
           component={Link}
           to="/"
         ></Button>
         <Button
           label="Register"
           startIcon={<RegisterIcon />}
+          style={{ color: "whitesmoke" }}
           component={Link}
           to="/register"
         ></Button>
@@ -44,8 +46,10 @@ class UI extends Component {
     let logoutMarkup = loggedIn ? (
       <>
         <Button
+          style={{ alignSelf: "left", justifyContent: "left" }}
           label="logout"
           startIcon={<LogoutIcon />}
+          style={{ color: "whitesmoke" }}
           onClick={() => {
             console.log("I Have Been Clicked");
             this.props.LogoutUser();
@@ -58,24 +62,38 @@ class UI extends Component {
 
     return (
       <div>
-        <AppBar position="static">
+        <AppBar
+          position="sticky-top"
+          style={{
+            border: "royalblue 2px solid",
+            padding: "0px,0px,0px,0px",
+            backgroundColor: "#6bb8ff",
+            // borderRadius: "3rem",
+            marginBottom: "5px",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Toolbar>
             {loginMarkup}
             <Button
               label="Search"
               startIcon={<SearchIcon />}
               component={Link}
+              style={{ color: "whitesmoke" }}
               to="/search"
             ></Button>
             <Button
               label="Favorite"
               startIcon={<FavoriteIcon />}
+              style={{ color: "whitesmoke" }}
               component={Link}
               to="/favorites"
             ></Button>
             <Button
               label="Settings"
               startIcon={<SettingsIcon />}
+              style={{ color: "whitesmoke" }}
               component={Link}
               to="/Settings"
             ></Button>

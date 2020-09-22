@@ -38,11 +38,12 @@ export class Login extends Component {
     return (
       <div
         style={{
-          border: "#BE9EFF 1px solid",
+          border: "#68CCF4 1px solid",
           padding: "5rem",
-          backgroundColor: "rgba(190, 158, 255, 0.2)",
+          backgroundColor: "rgba(150, 202, 250, .25)",
           borderRadius: "3rem",
           marginTop: "1px",
+          minHeight: "65vh",
         }}
       >
         <form

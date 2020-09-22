@@ -129,12 +129,12 @@ class advancedSearch extends Component {
       <>
         <div
           style={{
+            backgroundColor: "rgba(150, 202, 250, .25)",
             // border: "#BE9EFF 1px solid",
-            // padding: "2rem",
-            // backgroundColor: "rgba(190, 158, 255, 0.2)",
+            padding: "1rem",
             // borderRadius: "1px",
             // marginTop: "1px",
-            // height: "100vh",
+            height: "85vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -148,10 +148,13 @@ class advancedSearch extends Component {
               onChange={(e) => this.handleChange(e)}
             />
             <br />
+            <br />
             <div style={{ width: "45vh" }}>
               <Typography id="discrete-slider-always" gutterBottom>
                 Select Maximum Price
               </Typography>
+              <br />
+              <br />
               <Slider
                 name="value"
                 defaultValue={60}
@@ -174,7 +177,7 @@ class advancedSearch extends Component {
                 onChange={this.handleCheck}
                 inputProps={{ "aria-label": "secondary checkbox" }}
               />
-              Game on Sale
+              Select for games currently on discount
             </div>
             <br />
             <Button
@@ -189,9 +192,11 @@ class advancedSearch extends Component {
         </div>
         <div
           style={{
-            paddingBottom: "5px",
+            paddingBottom: "1px",
+            backgroundColor: "rgba(150, 202, 250, .25)",
           }}
         >
+          {/* <h1>Search Titles</h1> */}
           <Grid
             container
             spacing={3}
