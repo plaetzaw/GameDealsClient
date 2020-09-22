@@ -136,6 +136,7 @@ class advancedSearch extends Component {
           display: "grid",
           justifyContent: "center",
           alignItems: "center",
+          height: "100vh",
         }}
       >
         <form>
@@ -146,7 +147,7 @@ class advancedSearch extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <br />
-          <div style={{ width: "75vh", height: 100 }}>
+          <div style={{ width: "75vh" }}>
             <Typography id="discrete-slider-always" gutterBottom>
               Select Maximum Price
             </Typography>
@@ -184,16 +185,24 @@ class advancedSearch extends Component {
             Search!
           </Button>
         </form>
-        <Grid
-          container
-          direction="row"
-          // justify="flex-start"
-          // alignItems="stretch"
+        <div
+          style={{
+            display: "grid",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <Grid item xs={12} md={6} lg={3} xl={3}>
-            {searchCard}
+          <Grid
+            container
+            direction="row"
+            // justify="flex-start"
+            // alignItems="stretch"
+          >
+            <Grid item xs={12} md={6} lg={3} xl={3}>
+              {searchCard}
+            </Grid>
           </Grid>
-        </Grid>
+        </div>
       </div>
     );
   }
