@@ -39,6 +39,8 @@ export class favorites extends Component {
           borderRadius: "3rem",
           marginTop: "1px",
           display: "grid",
+          paddingBottom: "15vh",
+
           // justifyContent: "center",
           // alignItems: "center",
         }}

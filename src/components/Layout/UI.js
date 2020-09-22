@@ -26,17 +26,18 @@ class UI extends Component {
       <>Welcome {this.props.users.credentials.username}!</>
     ) : (
       <>
-        <Button label="Login" startIcon={<LoginIcon />} component={Link} to="/">
-          Login
-        </Button>
+        <Button
+          label="Login"
+          startIcon={<LoginIcon />}
+          component={Link}
+          to="/"
+        ></Button>
         <Button
           label="Register"
           startIcon={<RegisterIcon />}
           component={Link}
           to="/register"
-        >
-          Register
-        </Button>
+        ></Button>
       </>
     );
 
@@ -49,9 +50,7 @@ class UI extends Component {
             console.log("I Have Been Clicked");
             this.props.LogoutUser();
           }}
-        >
-          Logout
-        </Button>
+        ></Button>
       </>
     ) : (
       <></>
@@ -67,25 +66,19 @@ class UI extends Component {
               startIcon={<SearchIcon />}
               component={Link}
               to="/search"
-            >
-              Search
-            </Button>
+            ></Button>
             <Button
               label="Favorite"
               startIcon={<FavoriteIcon />}
               component={Link}
               to="/favorites"
-            >
-              Favorite
-            </Button>
+            ></Button>
             <Button
               label="Settings"
               startIcon={<SettingsIcon />}
               component={Link}
               to="/Settings"
-            >
-              Settings
-            </Button>
+            ></Button>
             <Typography variant="h6"></Typography>
 
             {logoutMarkup}

@@ -35,8 +35,6 @@ ReactDOM.render(
         <ProtectedRoute exact path="/search" component={advancedSearch} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
-        {/* <Route exact path="/advancedSearch" component={advancedSearch} /> */}
-        {/* <Route exact path="/Toast" component={Toast} /> */}
       </Switch>
     </BrowserRouter>
   </Provider>,

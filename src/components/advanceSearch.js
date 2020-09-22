@@ -126,84 +126,85 @@ class advancedSearch extends Component {
     );
 
     return (
-      <div
-        style={{
-          border: "#BE9EFF 1px solid",
-          // padding: "2rem",
-          backgroundColor: "rgba(190, 158, 255, 0.2)",
-          borderRadius: "1px",
-          marginTop: "1px",
-          display: "grid",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <form>
-          <TextField
-            name="title"
-            variant="outlined"
-            placeholder="Game Title"
-            onChange={(e) => this.handleChange(e)}
-          />
-          <br />
-          <div style={{ width: "75vh" }}>
-            <Typography id="discrete-slider-always" gutterBottom>
-              Select Maximum Price
-            </Typography>
-            <Slider
-              name="value"
-              defaultValue={60}
-              getAriaValueText={valuetext}
-              onChange={this.handleSlide("value")}
-              aria-labelledby="discrete-slider-always"
-              step={5}
-              marks={marks}
-              valueLabelDisplay="on"
-              value={value}
-              min={0}
-              max={60}
-            />
-          </div>
-          <br />
-          <div>
-            <Switch
-              checked={this.state.checked}
-              name="onSale"
-              onChange={this.handleCheck}
-              inputProps={{ "aria-label": "secondary checkbox" }}
-            />
-            Game on Sale
-          </div>
-          <br />
-          <Button
-            variant="contained"
-            color="default"
-            startIcon={<SearchIcon />}
-            onClick={this.onSearch}
-          >
-            Search!
-          </Button>
-        </form>
+      <>
         <div
           style={{
-            display: "grid",
+            // border: "#BE9EFF 1px solid",
+            // padding: "2rem",
+            // backgroundColor: "rgba(190, 158, 255, 0.2)",
+            // borderRadius: "1px",
+            // marginTop: "1px",
+            // height: "100vh",
+            display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
+          <form>
+            <TextField
+              name="title"
+              variant="outlined"
+              placeholder="Game Title"
+              onChange={(e) => this.handleChange(e)}
+            />
+            <br />
+            <div style={{ width: "45vh" }}>
+              <Typography id="discrete-slider-always" gutterBottom>
+                Select Maximum Price
+              </Typography>
+              <Slider
+                name="value"
+                defaultValue={60}
+                getAriaValueText={valuetext}
+                onChange={this.handleSlide("value")}
+                aria-labelledby="discrete-slider-always"
+                step={5}
+                marks={marks}
+                valueLabelDisplay="on"
+                value={value}
+                min={0}
+                max={60}
+              />
+            </div>
+            <br />
+            <div>
+              <Switch
+                checked={this.state.checked}
+                name="onSale"
+                onChange={this.handleCheck}
+                inputProps={{ "aria-label": "secondary checkbox" }}
+              />
+              Game on Sale
+            </div>
+            <br />
+            <Button
+              variant="contained"
+              color="default"
+              startIcon={<SearchIcon />}
+              onClick={this.onSearch}
+            >
+              Search!
+            </Button>
+          </form>
+        </div>
+        <div
+          style={{
+            paddingBottom: "15vh",
+          }}
+        >
           <Grid
             container
-            direction="row"
-            // justify="flex-start"
-            // alignItems="stretch"
+            spacing={3}
+            direction="columm"
+            justify="center"
+            alignItems="center"
           >
-            <Grid item xs={12} md={6} lg={3} xl={3}>
+            <Grid item xs={12} md={12} lg={"auto"} xl={"auto"}>
               {searchCard}
             </Grid>
           </Grid>
         </div>
-      </div>
+      </>
     );
   }
 }
