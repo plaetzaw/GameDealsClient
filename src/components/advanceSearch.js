@@ -189,7 +189,7 @@ class advancedSearch extends Component {
         </div>
         <div
           style={{
-            paddingBottom: "15vh",
+            paddingBottom: "5px",
           }}
         >
           <Grid
