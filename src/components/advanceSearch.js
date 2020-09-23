@@ -10,6 +10,10 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Switch from "@material-ui/core/Switch";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 class advancedSearch extends Component {
   constructor() {
@@ -18,6 +22,7 @@ class advancedSearch extends Component {
       title: "",
       value: 30,
       checked: false,
+      sort: 1,
     };
   }
 
@@ -28,6 +33,13 @@ class advancedSearch extends Component {
   };
 
   handleSlide = (name) => (e, value) => {
+    this.setState({
+      [name]: value,
+    });
+    console.log(this.state.value);
+  };
+
+  handleSelect = (name) => (value) => {
     this.setState({
       [name]: value,
     });
@@ -46,6 +58,7 @@ class advancedSearch extends Component {
       gameTitle: this.state.title,
       value: this.state.value,
       checked: this.state.checked,
+      sort: this.state.sort,
     };
     console.log(gameInfo);
     this.props.AdvancedSearch(gameInfo);
@@ -180,6 +193,22 @@ class advancedSearch extends Component {
               Select for games currently on discount
             </div>
             <br />
+            <div>
+              <FormControl style={{ margin: "25px", minWidth: "120px" }}>
+                <InputLabel id="selector">Sort Results By</InputLabel>
+                <Select
+                // value={sort}
+                // onChange={this.handleSort(e)}
+                >
+                  <MenuItem value={1}>Price</MenuItem>
+                  <MenuItem value={2}>Game Title</MenuItem>
+                  <MenuItem value={3}>Savings</MenuItem>
+                  <MenuItem value={4}>Deal Rating</MenuItem>
+                  <MenuItem value={5}>Store</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <br />
             <Button
               variant="contained"
               color="default"
@@ -200,7 +229,7 @@ class advancedSearch extends Component {
           <Grid
             container
             spacing={3}
-            direction="columm"
+            // direction="columm"
             justify="center"
             alignItems="center"
           >

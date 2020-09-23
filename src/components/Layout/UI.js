@@ -23,7 +23,15 @@ class UI extends Component {
     const { loggedIn } = this.props.users;
 
     let loginMarkup = loggedIn ? (
-      <>Welcome {this.props.users.credentials.username}!</>
+      <div
+        style={{
+          display: "grid",
+          alignSelf: "left",
+          justifyContent: "flex-start",
+        }}
+      >
+        Welcome {this.props.users.credentials.username}!
+      </div>
     ) : (
       <>
         <Button
@@ -47,8 +55,6 @@ class UI extends Component {
       <>
         <Button
           style={{
-            alignSelf: "left",
-            justifyContent: "left",
             color: "whitesmoke",
           }}
           label="logout"
@@ -66,15 +72,15 @@ class UI extends Component {
     return (
       <div>
         <AppBar
-          position="sticky-top"
+          position="sticky"
           style={{
             border: "royalblue 2px solid",
-            padding: "0px,0px,0px,0px",
             backgroundColor: "#6bb8ff",
             // borderRadius: "3rem",
             marginBottom: "5px",
             alignItems: "center",
             justifyContent: "center",
+            // paddingRight: "20rem",
           }}
         >
           <Toolbar>
