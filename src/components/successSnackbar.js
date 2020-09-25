@@ -19,6 +19,7 @@ export default function SuccessSnackbar() {
 
   return (
     <Snackbar
+      style={{ backgroundColor: "green" }}
       anchorOrigin={{
         vertical: "bottom",
         horizontal: "left",
@@ -27,7 +28,6 @@ export default function SuccessSnackbar() {
       autoHideDuration={4000}
       onClose={handleClose}
       aria-describedby="client-snackbar"
-      severity="success"
       message={
         <span id="client-snackbar">
           <CheckCircleIcon />

@@ -26,12 +26,23 @@ export const LoginUser = (userData) => (dispatch) => {
   console.log("Beginning login process");
   axios
     .post("https://thegametracker.herokuapp.com/login", userData)
-    .then((results) => {
-      setAuthorizationHeader(results.data.accessToken);
-      dispatch({ type: SET_AUTHENTICATED });
-      let decodedToken = jwtDecode(results.data.token);
-      console.log(decodedToken);
-      dispatch({ type: LOGGED_IN, payload: decodedToken });
+    .then((res) => {
+      if (res.status === 200) {
+        setAuthorizationHeader(res.data.accessToken);
+        dispatch({ type: SET_AUTHENTICATED });
+        let decodedToken = jwtDecode(res.data.token);
+        dispatch({ type: LOGGED_IN, payload: decodedToken });
+        dispatch({
+          type: SNACKBAR_SUCCESS,
+          payload: "You have been logged in",
+        });
+      } else {
+        dispatch({
+          type: SNACKBAR_ERROR,
+          payload:
+            "Your username and password were not correct. Please try again",
+        });
+      }
     });
 };
 
@@ -41,27 +52,28 @@ export const LogoutUser = () => (dispatch) => {
   localStorage.removeItem("JWToken");
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED });
+  dispatch({ type: SNACKBAR_SUCCESS, payload: "User logged out" });
 };
 
 // Register
-export const RegisterUser = (newUserData) => () => {
+export const RegisterUser = (newUserData) => (dispatch) => {
   console.log("Beginning new user registration");
   axios
     .post("https://thegametracker.herokuapp.com/register", newUserData)
     .then((res) => {
       if (res.status === 200) {
-        console.log("Registration Successful");
+        dispatch({
+          type: SNACKBAR_SUCCESS,
+          payload: "User registered! You may now login",
+        });
       } else {
-        console.log("Registration Failed. Please try again");
+        dispatch({ type: SNACKBAR_ERROR, payload: "Error, please try again" });
       }
     });
 };
 // Get User Favorites
 export const GetUserGames = (userID) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
-  console.log("Retrieving user favorites");
-  console.log(userID);
-  console.log(typeof userID);
   axios
     .post("https://thegametracker.herokuapp.com/viewSavedGames", userID)
     .then((favorites) => {
@@ -92,6 +104,7 @@ export const SubmitToFavorites = (gameObj) => (dispatch) => {
     .then((favorites) => {
       console.log(favorites);
       dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
+      dispatch({ type: SNACKBAR_SUCCESS, payload: "Added item to favorites" });
     })
     .catch((err) => console.log(err));
 };
@@ -106,6 +119,10 @@ export const DeleteFromFavorites = (data) => (dispatch) => {
     .post("https://thegametracker.herokuapp.com/deleteFavorite", id)
     .then(() => {
       dispatch({ type: DELETE_GAME_FROM_FAVORITES });
+      dispatch({
+        type: SNACKBAR_SUCCESS,
+        payload: "Removed item from favorites",
+      });
       axios
         .post("https://thegametracker.herokuapp.com/viewSavedGames", userID)
         .then((favorites) => {
@@ -190,7 +207,7 @@ export const AdvancedSearch = (data) => (dispatch) => {
 };
 
 //Set Alert
-export const SetAlert = (data) => () => {
+export const SetAlert = (data) => (dispatch) => {
   console.log(data);
   console.log("Setting alert");
   axios
@@ -198,10 +215,16 @@ export const SetAlert = (data) => () => {
     .then((res) => {
       if (res.status === 200) {
         console.log(
-          `Alert set ${data.gameID} to ${data.email} for ${data.price}`
+          dispatch({
+            type: SNACKBAR_SUCCESS,
+            payload: `Alert set ${data.gameID} to ${data.email} for ${data.price}`,
+          })
         );
       } else {
-        console.log("Alert not set, please try again");
+        dispatch({
+          type: SNACKBAR_ERROR,
+          payload: "Alert not set, please try again",
+        });
       }
     });
 };

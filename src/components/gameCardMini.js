@@ -59,7 +59,6 @@ class gameCardMini extends Component {
       userID: userID,
     };
     this.props.SubmitToFavorites(GameObj);
-    alert(`${this.props.data.title} added to your favorites list!`);
   };
 
   openMetacritic = (e) => {

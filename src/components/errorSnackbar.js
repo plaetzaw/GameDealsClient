@@ -14,7 +14,7 @@ export default function ErrorSnackbar() {
   );
 
   function handleClose() {
-    dispatch(SnackbarClear());
+    dispatch(SnackbarClear);
   }
 
   return (
