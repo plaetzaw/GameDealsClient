@@ -27,6 +27,7 @@ export default function SuccessSnackbar() {
       autoHideDuration={4000}
       onClose={handleClose}
       aria-describedby="client-snackbar"
+      severity="success"
       message={
         <span id="client-snackbar">
           <CheckCircleIcon />
@@ -41,7 +42,7 @@ export default function SuccessSnackbar() {
           color="inherit"
           onClick={handleClose}
         >
-          <Icon>close</Icon>
+          <Icon>X</Icon>
         </IconButton>,
       ]}
     />

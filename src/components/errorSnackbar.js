@@ -40,7 +40,7 @@ export default function ErrorSnackbar() {
           color="inherit"
           onClick={handleClose}
         >
-          <Icon>Close</Icon>
+          <Icon>X</Icon>
         </IconButton>,
       ]}
     />

@@ -128,40 +128,50 @@ export const UpdateUsername = (username) => (dispatch) => {
           type: SNACKBAR_SUCCESS,
           payload: "Username Successfully Updated!",
         });
-        console.log("Update Successful");
       } else {
         dispatch({
           type: SNACKBAR_ERROR,
           payload: "ERROR, Please Try Again!",
         });
-        console.log("Update Failed. Please try again");
       }
     });
 };
 
 //Update Email
-export const UpdateEmail = (email) => () => {
+export const UpdateEmail = (email) => (dispatch) => {
   console.log(email);
   axios
     .post("https://thegametracker.herokuapp.com/updateEmail", email)
     .then((res) => {
       if (res.status === 200) {
-        console.log("Update Successful");
+        dispatch({
+          type: SNACKBAR_SUCCESS,
+          payload: "Email Successfully Updated!",
+        });
       } else {
-        console.log("Update Failed. Please try again");
+        dispatch({
+          type: SNACKBAR_ERROR,
+          payload: "ERROR, Please Try Again!",
+        });
       }
     });
 };
 
 //Update Password
-export const UpdatePassword = (password) => () => {
+export const UpdatePassword = (password) => (dispatch) => {
   axios
     .post("https://thegametracker.herokuapp.com/updatePassword", password)
     .then((res) => {
       if (res.status === 200) {
-        console.log("Update Successful");
+        dispatch({
+          type: SNACKBAR_SUCCESS,
+          payload: "Password Successfully Updated!",
+        });
       } else {
-        console.log("Update Failed. Please try again");
+        dispatch({
+          type: SNACKBAR_ERROR,
+          payload: "ERROR, Please Try Again!",
+        });
       }
     });
 };

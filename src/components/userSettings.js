@@ -162,7 +162,6 @@ userSettings.propTypes = {
   UpdateEmail: PropTypes.func.isRequired,
   UpdateUsername: PropTypes.func.isRequired,
   UpdatePassword: PropTypes.func.isRequired,
-  UpdatePassword: PropTypes.func.isRequired,
   SnackbarSuccess: PropTypes.func.isRequired,
   SnackbarError: PropTypes.func.isRequired,
   SnackbarClear: PropTypes.func.isRequired,
