@@ -39,7 +39,7 @@ class advancedSearch extends Component {
     console.log(this.state.value);
   };
 
-  handleSelect = (name) => (value) => {
+  handleSelect = (name) => (e, value) => {
     this.setState({
       [name]: value,
     });
@@ -50,6 +50,10 @@ class advancedSearch extends Component {
     this.setState((state) => ({
       checked: !state.checked,
     }));
+  };
+
+  handleSort = (event) => {
+    this.setState({ name: event.target.name, sort: event.target.value });
   };
 
   onSearch = (e) => {
@@ -68,6 +72,8 @@ class advancedSearch extends Component {
     function valuetext(value) {
       return `${value}`;
     }
+
+    const { sort } = this.state;
 
     const { value } = this.state;
 
@@ -154,6 +160,8 @@ class advancedSearch extends Component {
           }}
         >
           <form>
+            <h1>Game Search</h1>
+
             <TextField
               name="title"
               variant="outlined"
@@ -196,15 +204,22 @@ class advancedSearch extends Component {
             <div>
               <FormControl style={{ margin: "25px", minWidth: "120px" }}>
                 <InputLabel id="selector">Sort Results By</InputLabel>
-                <Select
-                // value={sort}
-                // onChange={this.handleSort(e)}
-                >
-                  <MenuItem value={1}>Price</MenuItem>
-                  <MenuItem value={2}>Game Title</MenuItem>
-                  <MenuItem value={3}>Savings</MenuItem>
-                  <MenuItem value={4}>Deal Rating</MenuItem>
-                  <MenuItem value={5}>Store</MenuItem>
+                <Select value={this.state.sort} onChange={this.handleSort}>
+                  <MenuItem name="sort" value={1}>
+                    Price
+                  </MenuItem>
+                  <MenuItem name="sort" value={2}>
+                    Game Title
+                  </MenuItem>
+                  <MenuItem name="sort" value={3}>
+                    Savings
+                  </MenuItem>
+                  <MenuItem name="sort" value={4}>
+                    Deal Rating
+                  </MenuItem>
+                  <MenuItem name="sort" value={5}>
+                    Store
+                  </MenuItem>
                 </Select>
               </FormControl>
             </div>

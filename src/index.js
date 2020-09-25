@@ -11,6 +11,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Settings from "./pages/settings";
 import advancedSearch from "./components/advanceSearch";
+import Snackbar from "./components/registerSnackbar";
 
 //Routing
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -35,6 +36,7 @@ ReactDOM.render(
         <ProtectedRoute exact path="/search" component={advancedSearch} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
+        {/* <Route exact path="/test" component={Snackbar} /> */}
       </Switch>
     </BrowserRouter>
   </Provider>,
