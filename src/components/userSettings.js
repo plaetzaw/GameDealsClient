@@ -8,6 +8,9 @@ import {
   UpdateEmail,
   UpdateUsername,
   UpdatePassword,
+  SnackbarSuccess,
+  SnackbarError,
+  SnackbarClear,
 } from "../redux/actions/actions";
 
 class userSettings extends Component {
@@ -165,12 +168,16 @@ userSettings.propTypes = {
 const mapStateToProps = (state) => ({
   data: state.data,
   users: state.users,
+  ui: state.ui,
 });
 
 const mapDispatchToProps = {
   UpdateEmail,
   UpdateUsername,
   UpdatePassword,
+  SnackbarSuccess,
+  SnackbarError,
+  SnackbarClear,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(userSettings);

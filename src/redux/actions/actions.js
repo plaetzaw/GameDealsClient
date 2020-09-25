@@ -9,6 +9,9 @@ import {
   SEARCH_FOR_GAME_BY_TITLE,
   SET_GAME_TO_FAVORITES,
   DELETE_GAME_FROM_FAVORITES,
+  SNACKBAR_SUCCESS,
+  SNACKBAR_ERROR,
+  SNACKBAR_CLEAR,
 } from "./actionTypes";
 
 // Set JWT Token
@@ -114,12 +117,17 @@ export const DeleteFromFavorites = (data) => (dispatch) => {
 };
 
 //Update Username
-export const UpdateUsername = (username) => () => {
+export const UpdateUsername = (username) => (dispatch) => {
   console.log(username);
   axios
     .post("https://thegametracker.herokuapp.com/updateUsername", username)
     .then((res) => {
+      console.log(res);
       if (res.status === 200) {
+        dispatch({
+          type: SNACKBAR_SUCCESS,
+          payload: "Username Successfully Updated!",
+        });
         console.log("Update Successful");
       } else {
         console.log("Update Failed. Please try again");
@@ -182,4 +190,19 @@ export const SetAlert = (data) => () => {
         console.log("Alert not set, please try again");
       }
     });
+};
+
+//SnackbarSuccess
+export const SnackbarSuccess = (message) => (dispatch) => {
+  dispatch({ type: SNACKBAR_SUCCESS, payload: message.data });
+};
+
+//SnackbarError
+export const SnackbarError = (message) => (dispatch) => {
+  dispatch({ type: SNACKBAR_ERROR, payload: message.data });
+};
+
+//SnackbarClear
+export const SnackbarClear = (dispatch) => {
+  dispatch({ type: SNACKBAR_CLEAR });
 };
