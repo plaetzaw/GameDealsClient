@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
 import { Icon } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import { SnackbarClear } from "../redux/actions/actions";
+import ErrorIcon from "@material-ui/icons/Error";
 
 export default function ErrorSnackbar() {
   const dispatch = useDispatch();
@@ -23,12 +24,12 @@ export default function ErrorSnackbar() {
         horizontal: "left",
       }}
       open={errorSnackbarOpen}
-      autoHideDuration={4000}
+      autoHideDuration={400}
       onClose={handleClose}
       aria-describedby="client-snackbar"
       message={
         <span id="client-snackbar">
-          <Icon>check_circle</Icon>
+          <ErrorIcon />
           {errorSnackbarMessage}
         </span>
       }
@@ -39,7 +40,7 @@ export default function ErrorSnackbar() {
           color="inherit"
           onClick={handleClose}
         >
-          <Icon>close</Icon>
+          <Icon>Close</Icon>
         </IconButton>,
       ]}
     />

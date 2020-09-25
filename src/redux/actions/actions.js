@@ -130,6 +130,10 @@ export const UpdateUsername = (username) => (dispatch) => {
         });
         console.log("Update Successful");
       } else {
+        dispatch({
+          type: SNACKBAR_ERROR,
+          payload: "ERROR, Please Try Again!",
+        });
         console.log("Update Failed. Please try again");
       }
     });

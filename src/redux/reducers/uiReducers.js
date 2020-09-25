@@ -9,14 +9,14 @@ const uiReducer = (state = {}, action) => {
     case SNACKBAR_SUCCESS:
       return {
         ...state,
-        successSnackBarOpen: true,
-        successSnackBarMesasge: action.message,
+        successSnackbarOpen: true,
+        successSnackbarMessage: action.payload,
       };
     case SNACKBAR_ERROR:
       return {
         ...state,
-        errorSnackBarOpen: true,
-        errorSnackBarMesasge: action.message,
+        errorSnackbarOpen: true,
+        errorSnackbarMessage: action.payload,
       };
     case SNACKBAR_CLEAR:
       return {

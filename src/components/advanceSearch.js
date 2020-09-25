@@ -73,8 +73,6 @@ class advancedSearch extends Component {
       return `${value}`;
     }
 
-    const { sort } = this.state;
-
     const { value } = this.state;
 
     const marks = [
@@ -234,6 +232,7 @@ class advancedSearch extends Component {
             </Button>
           </form>
         </div>
+        test whrilr
         <div
           style={{
             paddingBottom: "1px",
@@ -245,10 +244,10 @@ class advancedSearch extends Component {
             container
             spacing={3}
             // direction="columm"
-            justify="center"
-            alignItems="center"
+            // justify="center"
+            // alignItems="center"
           >
-            <Grid item xs={12} md={12} lg={"auto"} xl={"auto"}>
+            <Grid item xs={12} md={6} lg={3} xl={3}>
               {searchCard}
             </Grid>
           </Grid>

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { Icon } from "@material-ui/core";
 import { SnackbarClear } from "../redux/actions/actions";
 
@@ -13,7 +14,7 @@ export default function SuccessSnackbar() {
   );
 
   function handleClose() {
-    dispatch(SnackbarClear());
+    dispatch(SnackbarClear);
   }
 
   return (
@@ -28,7 +29,8 @@ export default function SuccessSnackbar() {
       aria-describedby="client-snackbar"
       message={
         <span id="client-snackbar">
-          <Icon>check_circle</Icon>
+          <CheckCircleIcon />
+
           {successSnackbarMessage}
         </span>
       }
