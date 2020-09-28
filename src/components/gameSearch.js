@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/SearchTwoTone";
 import Button from "@material-ui/core/Button";
-import { GetGamesByTitle } from "../redux/actions/actions";
-import GameCardMini from "./gameCardMini";
+import { QuickSearch } from "../redux/actions/actions";
+import GameCardCheapest from "./gameCardCheapest";
 import Grid from "@material-ui/core/Grid";
 
 class gameSearch extends Component {
@@ -27,7 +27,7 @@ class gameSearch extends Component {
     const gameTitle = {
       gameTitle: this.state.title,
     };
-    this.props.GetGamesByTitle(gameTitle);
+    this.props.QuickSearch(gameTitle);
   };
 
   render() {
@@ -35,7 +35,7 @@ class gameSearch extends Component {
     const searchData = data.searchedGames;
 
     const searchMarkup = searchData.map((card) => {
-      return <GameCardMini key={card.id} data={card} />;
+      return <GameCardCheapest key={card.id} data={card} />;
     });
 
     const searchCard = data.searchedGame ? (
@@ -83,7 +83,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  GetGamesByTitle,
+  QuickSearch,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(gameSearch);

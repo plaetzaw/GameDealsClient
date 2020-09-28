@@ -7,6 +7,7 @@ import {
   GET_FAVORITE_GAMES,
   LOADING_DATA,
   SEARCH_FOR_GAME_BY_TITLE,
+  SEARCH_FOR_DEALS,
   SET_GAME_TO_FAVORITES,
   DELETE_GAME_FROM_FAVORITES,
   SNACKBAR_SUCCESS,
@@ -105,6 +106,18 @@ export const SubmitToFavorites = (gameObj) => (dispatch) => {
       console.log(favorites);
       dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
       dispatch({ type: SNACKBAR_SUCCESS, payload: "Added item to favorites" });
+    })
+    .catch((err) => console.log(err));
+};
+
+// Quick Search
+export const QuickSearch = (title) => (dispatch) => {
+  console.log("Finding game information");
+  axios
+    .post("http://localhost:8080/searchSingleResultTitle", title)
+    .then((searchedGames) => {
+      console.log(searchedGames);
+      dispatch({ type: SEARCH_FOR_DEALS, payload: searchedGames.data });
     })
     .catch((err) => console.log(err));
 };

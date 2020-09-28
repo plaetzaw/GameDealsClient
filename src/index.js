@@ -11,6 +11,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Settings from "./pages/settings";
 import advancedSearch from "./components/advanceSearch";
+import QuickSearch from "./components/gameSearch";
 import test from "./components/test";
 
 //Snackbars
@@ -42,6 +43,7 @@ ReactDOM.render(
         <ProtectedRoute exact path="/search" component={advancedSearch} />
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
+        <Route exact path="/QuickSearch" component={QuickSearch} />
         <Route exact path="/test" component={test} />
       </Switch>
     </BrowserRouter>
