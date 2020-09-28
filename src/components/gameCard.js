@@ -27,15 +27,14 @@ class gameCard extends Component {
     let gameID = this.props.data.gameID;
     let email = this.props.users.credentials.email;
     let price = this.props.data.salePrice;
+    let title = this.props.data.title;
     let alertObj = {
       gameID: gameID,
       email: email,
       price: price,
+      title: title,
     };
     this.props.SetAlert(alertObj);
-    alert(
-      `Email alert set for ${this.props.data.title} at ${price} to ${email}`
-    );
   };
 
   openMetacritic = (e) => {

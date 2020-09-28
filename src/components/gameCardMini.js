@@ -94,7 +94,7 @@ class gameCardMini extends Component {
           <CardMedia
             component="img"
             src={thumb}
-            style={{ maxWidth: "75vh", maxHeight: "35vh" }}
+            // style={{ maxWidth: "75vh", maxHeight: "35vh" }}
           />
           <CardContent
           // style={{ width: "300px" }}

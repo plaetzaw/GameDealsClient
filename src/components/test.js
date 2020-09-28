@@ -20,26 +20,15 @@ export default function FullWidthGrid() {
   return (
     <div>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={3} sm={3} md={12} lg={12}>
+          <Card>xs=12</Card>
+          <Card>xs=12</Card>
           <Card>xs=12</Card>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>xs=12 sm=6</Card>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Card>xs=12 sm=6</Card>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Card>xs=6 sm=3</Card>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Card>xs=6 sm=3</Card>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Card>xs=6 sm=3</Card>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Card>xs=6 sm=3</Card>
+        <Grid item xs={3} sm={3} md={12} lg={12}>
+          <Card>xs=12</Card>
+          <Card>xs=12</Card>
+          <Card>xs=12</Card>
         </Grid>
       </Grid>
     </div>

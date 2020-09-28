@@ -217,7 +217,7 @@ export const SetAlert = (data) => (dispatch) => {
         console.log(
           dispatch({
             type: SNACKBAR_SUCCESS,
-            payload: `Alert set ${data.gameID} to ${data.email} for ${data.price}`,
+            payload: `Alert set ${data.title} to ${data.email} for $${data.price}`,
           })
         );
       } else {

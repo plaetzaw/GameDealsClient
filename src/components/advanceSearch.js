@@ -232,7 +232,6 @@ class advancedSearch extends Component {
             </Button>
           </form>
         </div>
-        test whrilr
         <div
           style={{
             paddingBottom: "1px",
@@ -240,6 +239,7 @@ class advancedSearch extends Component {
           }}
         >
           {/* <h1>Search Titles</h1> */}
+
           <Grid
             container
             spacing={3}
@@ -247,7 +247,16 @@ class advancedSearch extends Component {
             // justify="center"
             // alignItems="center"
           >
-            <Grid item xs={12} md={6} lg={3} xl={3}>
+            <Grid
+              direction="row"
+              alignContent={"space-around"}
+              justify={"center"}
+              xs={12}
+              md={3}
+              lg={3}
+              xl={3}
+              wrap={"wrap"}
+            >
               {searchCard}
             </Grid>
           </Grid>

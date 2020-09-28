@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import LoginIcon from "@material-ui/icons/LockOpen";
@@ -9,6 +10,7 @@ import SearchIcon from "@material-ui/icons/SearchTwoTone";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorderTwoTone";
 import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
 import SettingsIcon from "@material-ui/icons/Settings";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -34,36 +36,42 @@ class UI extends Component {
       </div>
     ) : (
       <>
-        <Button
-          label="Login"
-          startIcon={<LoginIcon />}
-          style={{ color: "whitesmoke" }}
-          component={Link}
-          to="/"
-        ></Button>
-        <Button
-          label="Register"
-          startIcon={<RegisterIcon />}
-          style={{ color: "whitesmoke" }}
-          component={Link}
-          to="/register"
-        ></Button>
+        <Tooltip title="Login">
+          <Button
+            label="Login"
+            startIcon={<LoginIcon />}
+            style={{ color: "whitesmoke" }}
+            component={Link}
+            to="/"
+          ></Button>
+        </Tooltip>
+        <Tooltip title="Register">
+          <Button
+            label="Register"
+            startIcon={<RegisterIcon />}
+            style={{ color: "whitesmoke" }}
+            component={Link}
+            to="/register"
+          ></Button>
+        </Tooltip>
       </>
     );
 
     let logoutMarkup = loggedIn ? (
       <>
-        <Button
-          style={{
-            color: "whitesmoke",
-          }}
-          label="logout"
-          startIcon={<LogoutIcon />}
-          onClick={() => {
-            console.log("I Have Been Clicked");
-            this.props.LogoutUser();
-          }}
-        ></Button>
+        <Tooltip title="Logout">
+          <Button
+            style={{
+              color: "whitesmoke",
+            }}
+            label="logout"
+            startIcon={<LogoutIcon />}
+            onClick={() => {
+              console.log("I Have Been Clicked");
+              this.props.LogoutUser();
+            }}
+          ></Button>
+        </Tooltip>
       </>
     ) : (
       <></>
@@ -85,30 +93,47 @@ class UI extends Component {
         >
           <Toolbar>
             {loginMarkup}
-            <Button
-              label="Search"
-              startIcon={<SearchIcon />}
-              component={Link}
-              style={{ color: "whitesmoke" }}
-              to="/search"
-            ></Button>
-            <Button
-              label="Favorite"
-              startIcon={<FavoriteIcon />}
-              style={{ color: "whitesmoke" }}
-              component={Link}
-              to="/favorites"
-            ></Button>
-            <Button
-              label="Settings"
-              startIcon={<SettingsIcon />}
-              style={{ color: "whitesmoke" }}
-              component={Link}
-              to="/Settings"
-            ></Button>
+            <Tooltip title="Search">
+              <Button
+                aria-label="Search"
+                label="Search"
+                startIcon={<SearchIcon />}
+                component={Link}
+                style={{ color: "whitesmoke" }}
+                to="/search"
+              ></Button>
+            </Tooltip>
+            <Tooltip title="Favorite">
+              <Button
+                label="Favorite"
+                startIcon={<FavoriteIcon />}
+                style={{ color: "whitesmoke" }}
+                component={Link}
+                to="/favorites"
+              ></Button>
+            </Tooltip>
+            <Tooltip title="Settings">
+              <Button
+                label="Settings"
+                startIcon={<SettingsIcon />}
+                style={{ color: "whitesmoke" }}
+                component={Link}
+                to="/Settings"
+              ></Button>
+            </Tooltip>
             <Typography variant="h6"></Typography>
 
             {logoutMarkup}
+
+            <Tooltip title="Project Github">
+              <Button
+                label="Github"
+                startIcon={<GitHubIcon />}
+                style={{ color: "whitesmoke" }}
+                // component={Link}
+                href="https://github.com/plaetzaw/GameDealsClient"
+              ></Button>
+            </Tooltip>
           </Toolbar>
         </AppBar>
       </div>
