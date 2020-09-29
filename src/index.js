@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 
 //Layout
 import UI from "./components/Layout/UI";
+import UIFooter from "./components/Layout/UIFooter"; //Only used on Mobile
 
 //Pages
 import Favorites from "./pages/favorites";
@@ -12,7 +13,8 @@ import Register from "./pages/register";
 import Settings from "./pages/settings";
 import advancedSearch from "./components/advanceSearch";
 import QuickSearch from "./components/gameSearch";
-import test from "./components/test";
+// import test from "./components/test";
+import breakpointtest from "./components/breakpointtest";
 
 //Snackbars
 import SnackbarSuccess from "./components/successSnackbar";
@@ -44,8 +46,9 @@ ReactDOM.render(
         <ProtectedRoute exact path="/Favorites" component={Favorites} />
         <ProtectedRoute exact path="/Settings" component={Settings} />
         <Route exact path="/QuickSearch" component={QuickSearch} />
-        <Route exact path="/test" component={test} />
+        <Route exact path="/test" component={breakpointtest} />
       </Switch>
+      <UIFooter />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

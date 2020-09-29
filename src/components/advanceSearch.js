@@ -244,10 +244,11 @@ class advancedSearch extends Component {
             container
             spacing={3}
             // direction="columm"
-            // justify="center"
-            // alignItems="center"
+            justify="center"
+            alignItems="center"
           >
             <Grid
+              item
               direction="row"
               alignContent={"space-around"}
               justify={"center"}

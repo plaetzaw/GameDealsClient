@@ -10,18 +10,18 @@ import {
 } from "@material-ui/core";
 import Favorite from "@material-ui/icons/Bookmark";
 import Money from "@material-ui/icons/MonetizationOn";
-import { SubmitToFavorites } from "../redux/actions/actions";
+import { QuickSaveToFavorites } from "../redux/actions/actions";
 
 class gameCardCheapest extends Component {
   onSubmit = (e) => {
     e.preventDefault();
-    let { gameID } = this.props.data;
-    // let userID = this.props.users.credentials.id;
+    let { cheapestDealID } = this.props.data;
+    let userID = this.props.users.credentials.id;
     let GameObj = {
-      //   userID: userID,
-      gameID: gameID,
+      userID: userID,
+      cheapestDealID: cheapestDealID,
     };
-    this.props.SubmitToFavorites(GameObj);
+    this.props.QuickSaveToFavorites(GameObj);
   };
 
   openDeal = (e) => {
@@ -32,7 +32,7 @@ class gameCardCheapest extends Component {
   };
 
   render() {
-    const { external, gameID, steamAppID, cheapest, thumb } = this.props.data;
+    const { external, cheapest, thumb } = this.props.data;
 
     return (
       <Card
@@ -80,7 +80,7 @@ class gameCardCheapest extends Component {
 }
 
 gameCardCheapest.propTypes = {
-  SubmitToFavorites: PropTypes.func.isRequired,
+  QuickSaveToFavorites: PropTypes.func.isRequired,
   users: PropTypes.object.isRequired,
 };
 
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  SubmitToFavorites,
+  QuickSaveToFavorites,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(gameCardCheapest);
