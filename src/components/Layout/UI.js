@@ -14,7 +14,7 @@ import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import SpeedIcon from "@material-ui/icons/Speed";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { LogoutUser, QuickSearch } from "../../redux/actions/actions";

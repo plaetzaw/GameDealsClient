@@ -5,7 +5,7 @@ import { QuickSearch } from "../../redux/actions/actions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/SearchTwoTone";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 
