@@ -112,17 +112,19 @@ export const SubmitToFavorites = (gameObj) => (dispatch) => {
 
 // Get Full Game Info and Save to Favorites
 export const QuickSaveToFavorites = (data) => (dispatch) =>
-  axios.post("http://localhost:8080/getInfoAndSave", data).then((favorites) => {
-    console.log(favorites);
-    dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
-    dispatch({ type: SNACKBAR_SUCCESS, payload: "Added item to favorites" });
-  });
+  axios
+    .post("https://thegametracker.herokuapp.com/getInfoAndSave", data)
+    .then((favorites) => {
+      console.log(favorites);
+      dispatch({ type: SET_GAME_TO_FAVORITES, payload: favorites.data });
+      dispatch({ type: SNACKBAR_SUCCESS, payload: "Added item to favorites" });
+    });
 
 // Quick Search
 export const QuickSearch = (title) => (dispatch) => {
   console.log("Finding game information");
   axios
-    .post("http://localhost:8080/searchSingleResultTitle", title)
+    .post("https://thegametracker.herokuapp.com/searchSingleResultTitle", title)
     .then((searchedGames) => {
       console.log(searchedGames);
       dispatch({ type: SEARCH_FOR_DEALS, payload: searchedGames.data });
