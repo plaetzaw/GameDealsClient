@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { layoutGenerator } from "react-break";
-import TextField from "@material-ui/core/TextField";
+import InputBase from "@material-ui/core/InputBase";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -77,8 +77,6 @@ class UI extends Component {
             startIcon={<LoginIcon />}
             style={{
               color: "whitesmoke",
-              // paddingLeft: "10rem",
-              // paddingRight: "10rem",
             }}
             component={Link}
             to="/"
@@ -126,23 +124,38 @@ class UI extends Component {
               marginBottom: "5px",
               alignItems: "center",
               justifyContent: "center",
-              // paddingRight: "20rem",
             }}
           >
             <Toolbar>
-              {loginMarkup}
+              <div
+                style={{
+                  // backgroundColor: "red",
+                  marginRight: "5rem",
+                }}
+              >
+                {" "}
+                {loginMarkup}
+              </div>
               <Tooltip title="Search">
                 <Button
                   startIcon={<SearchIcon />}
                   component={Link}
-                  style={{ color: "whitesmoke" }}
+                  style={{
+                    color: "whitesmoke",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                  }}
                   to="/search"
                 ></Button>
               </Tooltip>
               <Tooltip title="Favorite">
                 <Button
                   startIcon={<FavoriteIcon />}
-                  style={{ color: "whitesmoke" }}
+                  style={{
+                    color: "whitesmoke",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                  }}
                   component={Link}
                   to="/favorites"
                 ></Button>
@@ -150,7 +163,11 @@ class UI extends Component {
               <Tooltip title="Settings">
                 <Button
                   startIcon={<SettingsIcon />}
-                  style={{ color: "whitesmoke" }}
+                  style={{
+                    color: "whitesmoke",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                  }}
                   component={Link}
                   to="/Settings"
                 ></Button>
@@ -162,7 +179,11 @@ class UI extends Component {
               <Tooltip title="Project Github">
                 <Button
                   startIcon={<GitHubIcon />}
-                  style={{ color: "whitesmoke" }}
+                  style={{
+                    color: "whitesmoke",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                  }}
                   // component={Link}
                   href="https://github.com/plaetzaw/GameDealsClient"
                 ></Button>
@@ -170,23 +191,29 @@ class UI extends Component {
               <Tooltip title="QuickSearch">
                 <Button
                   startIcon={<SpeedIcon />}
-                  style={{ color: "whitesmoke" }}
+                  style={{
+                    color: "whitesmoke",
+                    marginLeft: "1rem",
+                    marginRight: "1rem",
+                  }}
                   component={Link}
                   to="/QuickSearch"
                 ></Button>
               </Tooltip>
               <div
                 style={{
-                  paddingLeft: "300px",
-                  backgroundColor: "green",
+                  marginLeft: "15rem",
                 }}
               >
                 <form>
-                  <TextField
-                    style={{ paddingLeft: "15 rem", backgroundColor: "yellow" }}
+                  <InputBase
+                    style={{
+                      backgroundColor: "white",
+                      border: "royalblue 2px solid",
+                    }}
                     name="title"
                     variant="outlined"
-                    placeholder="QuickSearch for a game"
+                    placeholder="Currently Disabled"
                     onChange={(e) => this.handleChange(e)}
                   />
                   <Button

@@ -45,29 +45,59 @@ class gameSearch extends Component {
     );
 
     return (
-      <div>
-        <form>
-          <TextField
-            name="title"
-            variant="outlined"
-            placeholder="Game Title"
-            onChange={(e) => this.handleChange(e)}
-          />
-          <Button
-            variant="contained"
-            color="default"
-            startIcon={<SearchIcon />}
-            onClick={this.onSearch}
+      <>
+        <div
+          style={{
+            backgroundColor: "rgba(150, 202, 250, .25)",
+            border: "#BE9EFF 1px solid",
+            padding: "1rem",
+            // borderRadius: "1px",
+            // marginTop: "1px",
+            height: "80vh",
+            display: "grid",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h1>QuickSearch for a title</h1>
+          <form>
+            <TextField
+              name="title"
+              variant="outlined"
+              placeholder="Game Title"
+              onChange={(e) => this.handleChange(e)}
+            />
+            <Button
+              variant="contained"
+              color="default"
+              startIcon={<SearchIcon />}
+              onClick={this.onSearch}
+            >
+              Search!
+            </Button>
+          </form>
+        </div>
+
+        <div>
+          <Grid
+            container
+            spacing={3}
+            justify="center"
+            style={{
+              backgroundColor: "rgba(150, 202, 250, .25)",
+              border: "#BE9EFF 1px solid",
+              padding: "1rem",
+              display: "grid",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Search!
-          </Button>
-        </form>
-        <Grid container spacing={3} justify="center">
-          <Grid item xs={12} md={6} lg={6} xl={6}>
-            {searchCard}
+            <Grid item xs={12} md={6} lg={6} xl={6}>
+              {searchCard}
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      </>
     );
   }
 }
