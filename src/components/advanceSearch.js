@@ -69,6 +69,7 @@ class advancedSearch extends Component {
   };
 
   render() {
+    //Display current value
     function valuetext(value) {
       return `${value}`;
     }
